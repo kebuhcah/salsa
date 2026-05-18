@@ -371,6 +371,54 @@
       max-width: 220px;
       line-height: 1.5;
     }
+
+    /* ── compact notation ── */
+    .annot-body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+      flex: 1;
+    }
+    .cn {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      flex-wrap: wrap;
+      font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace;
+      font-size: 0.72rem;
+      line-height: 1;
+      opacity: 0.6;
+      transition: opacity 0.1s;
+    }
+    .annot-row.active .cn { opacity: 1; }
+    .cn-hold {
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 0.66rem;
+      border: 1px solid;
+    }
+    .cn-hold.open      { color: #7fbf7a; border-color: #3a5838; background: #182618; }
+    .cn-hold.crossed   { color: #e08050; border-color: #6a3018; background: #251510; }
+    .cn-hold.closed    { color: #5a9eff; border-color: #1a4080; background: #0d1a30; }
+    .cn-hold.hl_left   { color: #c077ef; border-color: #602880; background: #1e0f2e; }
+    .cn-hold.hl_right  { color: #c077ef; border-color: #602880; background: #1e0f2e; }
+    .cn-hold.embrace   { color: #f0aa40; border-color: #805020; background: #281a08; }
+    .cn-hold.shadow    { color: #8090b0; border-color: #405060; background: #151e26; }
+    .cn-move  { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
+    .cn-fturn { color: #c077ef; font-size: 0.82rem; }
+    .cn-lturn { color: #5a9eff; font-size: 0.82rem; }
+    .cn-transition { color: var(--muted); font-size: 0.7rem; }
+    .cn-dec   { color: var(--muted); font-size: 0.68rem; font-style: italic; }
+    /* in now-playing panel, scale up the compact notation */
+    #now-moves .cn {
+      font-size: 0.85rem;
+      opacity: 1;
+      margin-top: 2px;
+    }
+    #now-moves .cn-move { font-size: 0.9rem; }
+    #now-moves .cn-hold { font-size: 0.78rem; }
   </style>
 </head>
 <body>
@@ -790,6 +838,143 @@
     });
   });
 
+  // ── compact notation ─────────────────────────────────────────────────────────
+
+  const HOLD_SYM = {
+    open:     { sym: '○', label: 'open hold' },
+    crossed:  { sym: '✕', label: 'crossed hold' },
+    closed:   { sym: '●', label: 'closed hold' },
+    hl_left:  { sym: '⊏', label: 'left hammerlock' },
+    hl_right: { sym: '⊐', label: 'right hammerlock' },
+    embrace:  { sym: '∞', label: 'embrace' },
+    shadow:   { sym: '≡', label: 'shadow' },
+  };
+
+  const CN_MOVES = {
+    basic:       { abbr: 'B',   label: 'Basic step' },
+    side_basic:  { abbr: 'sB',  label: 'Side basic' },
+    cross_basic: { abbr: 'xB',  label: 'Cross-back basic' },
+    back_basic:  { abbr: 'bB',  label: 'Back basic' },
+    xbl:         { abbr: 'X',   label: 'Cross body lead' },
+    turn:        { abbr: 'T',   label: 'Turn' },
+    copa:        { abbr: 'Cp',  label: 'Copa' },
+    comb:        { abbr: 'Cm',  label: 'Comb' },
+    ht:          { abbr: 'Ht',  label: 'Hand throw' },
+    nt:          { abbr: 'Nt',  label: 'Natural top' },
+    walks:       { abbr: 'W',   label: 'Walks around' },
+    suzyq:       { abbr: 'Sq',  label: 'Suzy Q' },
+    check:       { abbr: 'Ck',  label: 'Check' },
+    openbreak:   { abbr: 'Ob',  label: 'Open break' },
+    lasso:       { abbr: 'La',  label: 'Lasso' },
+    armlock:     { abbr: 'Al',  label: 'Arm lock' },
+    cod:         { abbr: 'CoD', label: 'Change of directions' },
+    enchufla:    { abbr: 'Enc', label: 'Enchufla' },
+    bodyroll:    { abbr: 'Br',  label: 'Body roll' },
+    other:       { abbr: '?',   label: 'Other' },
+  };
+
+  const CN_COLORS = {
+    xbl: '#e05a2b', basic: '#7880a0', side_basic: '#7880a0',
+    cross_basic: '#7880a0', back_basic: '#7880a0', turn: '#4a9eff',
+    copa: '#c77dff', comb: '#f0c040', ht: '#ff6b6b', nt: '#40c8a8',
+    walks: '#50c878', suzyq: '#ffaa40', check: '#80c8ff',
+    openbreak: '#ff9090', lasso: '#ff80c0', armlock: '#c0a060',
+    cod: '#9090ff', enchufla: '#ff60a0', bodyroll: '#60c0a0',
+  };
+
+  function cnMoveType(raw) {
+    const t = raw.toLowerCase();
+    if (/\bside basic\b/.test(t))                   return 'side_basic';
+    if (/\bcross.?back basic\b/.test(t))             return 'cross_basic';
+    if (/\bback basic\b/.test(t))                    return 'back_basic';
+    if (/\bbasic step\b/.test(t))                    return 'basic';
+    if (/\bxbl\b/.test(t))                           return 'xbl';
+    if (/\bcopa\b/.test(t))                          return 'copa';
+    if (/\bnatural top\b/.test(t))                   return 'nt';
+    if (/\bsuzy q\b/.test(t))                        return 'suzyq';
+    if (/\bwalk.{0,10}around\b/.test(t))             return 'walks';
+    if (/\bchange of direction\b/.test(t))           return 'cod';
+    if (/\benchufla\b/.test(t))                      return 'enchufla';
+    if (/\b(right.*throw|left.*throw|double.*throw|single.*throw|hand throw)\b/.test(t)) return 'ht';
+    if (/\bbody roll\b/.test(t))                     return 'bodyroll';
+    if (/\bcomb\b/.test(t))                          return 'comb';
+    if (/\bcheck\b/.test(t))                         return 'check';
+    if (/\blasso\b/.test(t))                         return 'lasso';
+    if (/\barm lock\b/.test(t))                      return 'armlock';
+    if (/\bopen break\b/.test(t))                    return 'openbreak';
+    if (/\bright turn\b|\bleft turn\b/.test(t))      return 'turn';
+    return 'other';
+  }
+
+  function cnInferHoldOut(raw, holdIn) {
+    const t = raw.toLowerCase();
+    if (/\bcrossed hold\b|\bcrossed hand\b/.test(t))              return 'crossed';
+    if (/\bleft hl\b|\bleft hammerlock\b/.test(t))                return 'hl_left';
+    if (/\bright hl\b|\bright hammerlock\b/.test(t))              return 'hl_right';
+    if (/\bnormal closed hold\b|\bnormal closed hand\b|\bclosed hold\b/.test(t)) return 'closed';
+    if (/\bnormal open hold\b|\bopen hold\b|\bopen hand\b/.test(t)) return 'open';
+    if (/\bembrace\b/.test(t))                                    return 'embrace';
+    if (/\bshadow\b/.test(t))                                     return 'shadow';
+    if (/\bxbl\b/.test(t))                                        return 'open';
+    if (/\bthrow\b/.test(t))                                      return 'crossed';
+    if (/ends with comb|comb on/.test(t))                         return 'open';
+    return holdIn;
+  }
+
+  function computeHoldStates(annotations) {
+    let hold = 'open';
+    for (const ann of annotations) {
+      if (ann.category !== 'Together') continue;
+      ann.holdIn  = hold;
+      ann.holdOut = cnInferHoldOut(ann.description, hold);
+      hold = ann.holdOut;
+    }
+  }
+
+  function buildCN(ann) {
+    if (ann.holdIn === undefined) return '';
+    const key    = cnMoveType(ann.description);
+    const info   = CN_MOVES[key] ?? CN_MOVES.other;
+    const color  = CN_COLORS[key] ?? '#7880a0';
+    const holdIn = ann.holdIn, holdOut = ann.holdOut;
+    const t = ann.description.toLowerCase();
+
+    // turn arrows
+    let fTurn = null, lTurn = null;
+    if      (/double.{0,10}right.{0,10}(turn|follower)/.test(t)) fTurn = '↻↻';
+    else if (/double.{0,10}left.{0,10}(turn|follower)/.test(t))  fTurn = '↺↺';
+    else if (/right.{0,30}follower|follower.{0,30}right|outside.{0,10}turn/.test(t)) fTurn = '↻';
+    else if (/left.{0,30}follower|follower.{0,30}left|inside.{0,10}turn/.test(t))    fTurn = '↺';
+    if (/right.{0,30}leader|leader.{0,30}right/.test(t)) lTurn = '↻';
+    else if (/left.{0,30}leader|leader.{0,30}left/.test(t))      lTurn = '↺';
+
+    // ending decorator
+    let dec = null;
+    if (key !== 'comb'  && /\bcomb\b/.test(t))   dec = '·Cm';
+    if (key !== 'check' && /\bcheck\b/.test(t))  dec = '·Ck';
+    if (/\bbreak\b/.test(t))                     dec = '·Ob';
+    if (key !== 'ht'    && /\bthrow\b/.test(t))  dec = '·Ht';
+    if (/\bdrop\b/.test(t))                      dec = '·↓';
+
+    let h = '';
+    // entry hold chip: show when not in default open
+    if (holdIn !== 'open') {
+      const hd = HOLD_SYM[holdIn] ?? { sym: holdIn, label: holdIn };
+      h += `<span class="cn-hold ${holdIn}" title="${hd.label}">${hd.sym}</span>`;
+    }
+    h += `<span class="cn-move" style="color:${color}" title="${info.label}">${info.abbr}</span>`;
+    if (fTurn) h += `<span class="cn-fturn" title="follower">${fTurn}</span>`;
+    if (lTurn) h += `<span class="cn-lturn" title="leader">${lTurn}</span>`;
+    // exit hold chip: show when hold changes
+    if (holdIn !== holdOut) {
+      const hd = HOLD_SYM[holdOut] ?? { sym: holdOut, label: holdOut };
+      h += `<span class="cn-transition">→</span><span class="cn-hold ${holdOut}" title="→ ${hd.label}">${hd.sym}</span>`;
+    }
+    if (dec) h += `<span class="cn-dec">${dec}</span>`;
+
+    return `<div class="cn">${h}</div>`;
+  }
+
   // ── parse annotations ───────────────────────────────────────────────────────
   function parseAnnotations(text) {
     const rows = [];
@@ -836,7 +1021,10 @@
       div.className = `annot-row ${cls}`;
       div.innerHTML = `
         <span class="annot-time">${formatTime(ann.startSec)}</span>
-        <span class="annot-text">${badge(ann.category)}${escHtml(ann.description)}</span>
+        <div class="annot-body">
+          <span class="annot-text">${badge(ann.category)}${escHtml(ann.description)}</span>
+          ${ann.category === 'Together' ? buildCN(ann) : ''}
+        </div>
       `;
       div.addEventListener('click', () => { player.currentTime = ann.startSec; player.play(); });
       annotList.appendChild(div);
@@ -901,7 +1089,8 @@
                    : a.category === 'Separate_Follower' ? '<small style="opacity:.6">Follower · </small>'
                    : a.category === 'Errors' ? '<small style="opacity:.6">Error · </small>'
                    : '';
-      return `<div class="now-move ${cls}">${prefix}${escHtml(a.description)}</div>`;
+      const cn = a.category === 'Together' ? buildCN(a) : '';
+      return `<div class="now-move ${cls}">${prefix}${escHtml(a.description)}${cn}</div>`;
     }).join('');
   }
 
@@ -932,6 +1121,7 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();
       allAnnotations = parseAnnotations(text);
+      computeHoldStates(allAnnotations);
       rebuildList();
       nowMoves.innerHTML = '<span style="color:var(--muted);font-size:.9rem">Press play to begin.</span>';
     } catch (err) {
