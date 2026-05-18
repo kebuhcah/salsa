@@ -482,6 +482,23 @@
       color: var(--leader);
       background: #0d1e33;
     }
+
+    /* ── shared hover tooltip ── */
+    #app-tooltip {
+      position: fixed;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 0.76rem;
+      color: var(--text);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.08s;
+      z-index: 300;
+      max-width: 300px;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -538,6 +555,8 @@
     <div class="graph-legend" id="graph-legend"></div>
   </div>
 </main>
+
+<div id="app-tooltip"></div>
 
 <script>
   // ── tab switching ────────────────────────────────────────────────────────────
@@ -908,36 +927,36 @@
   // ── compact notation ─────────────────────────────────────────────────────────
 
   const HOLD_SYM = {
-    open:     { sym: '○', label: 'open hold' },
-    crossed:  { sym: '✕', label: 'crossed hold' },
-    closed:   { sym: '●', label: 'closed hold' },
-    hl_left:  { sym: '⊏', label: 'left hammerlock' },
-    hl_right: { sym: '⊐', label: 'right hammerlock' },
-    embrace:  { sym: '∞', label: 'embrace' },
-    shadow:   { sym: '≡', label: 'shadow' },
+    open:     { sym: '○', label: 'open hold',       tip: '○ open hold — one-hand connection (leader R → follower L)' },
+    crossed:  { sym: '✕', label: 'crossed hold',    tip: '✕ crossed hold — hands crossed over, creates tension' },
+    closed:   { sym: '●', label: 'closed hold',     tip: '● closed hold — standard ballroom frame' },
+    hl_left:  { sym: '⊏', label: 'left hammerlock', tip: '⊏ left hammerlock — follower\'s left arm pinned behind back' },
+    hl_right: { sym: '⊐', label: 'right hammerlock',tip: '⊐ right hammerlock — follower\'s right arm pinned behind back' },
+    embrace:  { sym: '∞', label: 'embrace',         tip: '∞ embrace — both arms, follower facing away (Titanic / shadow frame)' },
+    shadow:   { sym: '≡', label: 'shadow',          tip: '≡ shadow — side by side, same direction, matching orientation' },
   };
 
   const CN_MOVES = {
-    basic:       { abbr: 'B',   label: 'Basic step' },
-    side_basic:  { abbr: 'sB',  label: 'Side basic' },
-    cross_basic: { abbr: 'xB',  label: 'Cross-back basic' },
-    back_basic:  { abbr: 'bB',  label: 'Back basic' },
-    xbl:         { abbr: 'X',   label: 'Cross body lead' },
-    turn:        { abbr: 'T',   label: 'Turn' },
-    copa:        { abbr: 'Cp',  label: 'Copa' },
-    comb:        { abbr: 'Cm',  label: 'Comb' },
-    ht:          { abbr: 'Ht',  label: 'Hand throw' },
-    nt:          { abbr: 'Nt',  label: 'Natural top' },
-    walks:       { abbr: 'W',   label: 'Walks around' },
-    suzyq:       { abbr: 'Sq',  label: 'Suzy Q' },
-    check:       { abbr: 'Ck',  label: 'Check' },
-    openbreak:   { abbr: 'Ob',  label: 'Open break' },
-    lasso:       { abbr: 'La',  label: 'Lasso' },
-    armlock:     { abbr: 'Al',  label: 'Arm lock' },
-    cod:         { abbr: 'CoD', label: 'Change of directions' },
-    enchufla:    { abbr: 'Enc', label: 'Enchufla' },
-    bodyroll:    { abbr: 'Br',  label: 'Body roll' },
-    other:       { abbr: '?',   label: 'Other' },
+    basic:       { abbr: 'B',   tip: 'B — Basic step: rock forward-back-pause over 8 counts' },
+    side_basic:  { abbr: 'sB',  tip: 'sB — Side basic step: basic step moving laterally' },
+    cross_basic: { abbr: 'xB',  tip: 'xB — Cross-back basic: back step crossing behind' },
+    back_basic:  { abbr: 'bB',  tip: 'bB — Back basic step: weight rock backward' },
+    xbl:         { abbr: 'X',   tip: 'X — Cross Body Lead: leader guides follower across the slot' },
+    turn:        { abbr: 'T',   tip: 'T — Isolated turn (not attached to an XBL)' },
+    copa:        { abbr: 'Cp',  tip: 'Cp — Copa: pivot that redirects follower, common phrase boundary' },
+    comb:        { abbr: 'Cm',  tip: 'Cm — Comb: leader\'s hand drawn over follower\'s head' },
+    ht:          { abbr: 'Ht',  tip: 'Ht — Hand throw: dramatic release/throw of one or both hands' },
+    nt:          { abbr: 'Nt',  tip: 'Nt — Natural top: continuous circular motion around a pivot' },
+    walks:       { abbr: 'W',   tip: 'W — Walks around: follower walks in a circle around leader' },
+    suzyq:       { abbr: 'Sq',  tip: 'Sq — Suzy Q: classic footwork side-to-side syncopated pattern' },
+    check:       { abbr: 'Ck',  tip: 'Ck — Check: halt step to redirect weight or pause momentum' },
+    openbreak:   { abbr: 'Ob',  tip: 'Ob — Open break: both partners step apart, creating space' },
+    lasso:       { abbr: 'La',  tip: 'La — Lasso: overhead circular arm motion (rope-like)' },
+    armlock:     { abbr: 'Al',  tip: 'Al — Arm lock: arm held to create tension before a release/turn' },
+    cod:         { abbr: 'CoD', tip: 'CoD — Change of Directions: partners swap position in the slot' },
+    enchufla:    { abbr: 'Enc', tip: 'Enc — Enchufla: Cuban pattern where partners rotate places' },
+    bodyroll:    { abbr: 'Br',  tip: 'Br — Body roll: fluid wave motion through the torso' },
+    other:       { abbr: '?',   tip: '? — Unclassified or rare move' },
   };
 
   const CN_COLORS = {
@@ -1023,21 +1042,29 @@
     if (key !== 'ht'    && /\bthrow\b/.test(t))  dec = '·Ht';
     if (/\bdrop\b/.test(t))                      dec = '·↓';
 
+    const fTurnTip = { '↺':'follower: left (inside) turn', '↻':'follower: right (outside) turn',
+                       '↺↺':'follower: double left turn',  '↻↻':'follower: double right turn' };
+    const lTurnTip = { '↺':'leader: left turn', '↻':'leader: right turn' };
+    const decTip   = { '·Cm':'ends with a comb (hand over head)', '·Ck':'ends with a check (weight redirect)',
+                       '·Ob':'ends with an open break',           '·Ht':'ends with a hand throw',
+                       '·↓':'ends with a hand drop' };
+
     let h = '';
     // entry hold chip: show when not in default open
     if (holdIn !== 'open') {
-      const hd = HOLD_SYM[holdIn] ?? { sym: holdIn, label: holdIn };
-      h += `<span class="cn-hold ${holdIn}" title="${hd.label}">${hd.sym}</span>`;
+      const hd = HOLD_SYM[holdIn] ?? { sym: holdIn, tip: holdIn };
+      h += `<span class="cn-hold ${holdIn}" data-tip="${hd.tip}">${hd.sym}</span>`;
     }
-    h += `<span class="cn-move" style="color:${color}" title="${info.label}">${info.abbr}</span>`;
-    if (fTurn) h += `<span class="cn-fturn" title="follower">${fTurn}</span>`;
-    if (lTurn) h += `<span class="cn-lturn" title="leader">${lTurn}</span>`;
+    h += `<span class="cn-move" style="color:${color}" data-tip="${info.tip}">${info.abbr}</span>`;
+    if (fTurn) h += `<span class="cn-fturn" data-tip="${fTurnTip[fTurn] ?? fTurn}">${fTurn}</span>`;
+    if (lTurn) h += `<span class="cn-lturn" data-tip="${lTurnTip[lTurn] ?? lTurn}">${lTurn}</span>`;
     // exit hold chip: show when hold changes
     if (holdIn !== holdOut) {
-      const hd = HOLD_SYM[holdOut] ?? { sym: holdOut, label: holdOut };
-      h += `<span class="cn-transition">→</span><span class="cn-hold ${holdOut}" title="→ ${hd.label}">${hd.sym}</span>`;
+      const hd = HOLD_SYM[holdOut] ?? { sym: holdOut, tip: holdOut };
+      h += `<span class="cn-transition" data-tip="hold state changes to →">→</span>`;
+      h += `<span class="cn-hold ${holdOut}" data-tip="${hd.tip}">${hd.sym}</span>`;
     }
-    if (dec) h += `<span class="cn-dec">${dec}</span>`;
+    if (dec) h += `<span class="cn-dec" data-tip="${decTip[dec] ?? dec}">${dec}</span>`;
 
     return `<div class="cn">${h}</div>`;
   }
@@ -1262,6 +1289,32 @@
       nowMoves.innerHTML = '<span style="color:var(--error);font-size:.85rem">Annotation load failed.</span>';
     }
   });
+
+  // ── shared [data-tip] tooltip ─────────────────────────────────────────────
+  const appTooltip = document.getElementById('app-tooltip');
+
+  function tipOn(e) {
+    const el = e.target.closest('[data-tip]');
+    if (!el) { appTooltip.style.opacity = '0'; return; }
+    appTooltip.textContent = el.dataset.tip;
+    appTooltip.style.opacity = '1';
+    positionTip(e);
+  }
+  function tipMove(e) {
+    if (appTooltip.style.opacity === '1') positionTip(e);
+  }
+  function tipOff() { appTooltip.style.opacity = '0'; }
+  function positionTip(e) {
+    const x = e.clientX + 14, y = e.clientY - 36;
+    appTooltip.style.left = Math.min(x, window.innerWidth  - appTooltip.offsetWidth  - 8) + 'px';
+    appTooltip.style.top  = Math.max(y, 4) + 'px';
+  }
+
+  for (const el of [annotList, document.getElementById('now-moves')]) {
+    el.addEventListener('mouseover',  tipOn);
+    el.addEventListener('mousemove',  tipMove);
+    el.addEventListener('mouseleave', tipOff);
+  }
 </script>
 </body>
 </html>
