@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoMPAS3D Salsa Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -247,40 +248,472 @@
       font-size: 0.85rem;
       line-height: 1.6;
     }
+
+    /* ── tabs ── */
+    #tabs {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .tab-btn {
+      padding: 5px 14px;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tab-btn.active {
+      background: var(--surface2);
+      color: var(--text);
+      border-color: var(--accent2);
+    }
+
+    /* ── viewer controls (hide on graph tab) ── */
+    #viewer-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      min-width: 0;
+    }
+    #viewer-controls.hidden,
+    #graph-controls.hidden { display: none; }
+
+    /* ── graph panel ── */
+    #graph-panel {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #graph-panel.active {
+      display: flex;
+    }
+    #viewer-panel {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    #viewer-panel.hidden {
+      display: none;
+    }
+
+    #graph-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    #graph-controls label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    #graph-controls input[type=range] {
+      accent-color: var(--accent);
+      width: 100px;
+    }
+    #graph-controls input[type=checkbox] {
+      accent-color: var(--accent);
+    }
+
+    #graph-svg-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #graph-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .graph-legend {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.73rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .graph-legend-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .graph-legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .graph-tooltip {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 7px 11px;
+      font-size: 0.78rem;
+      color: var(--text);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.1s;
+      max-width: 220px;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>CoMPAS3D Salsa</h1>
-  <select id="seq-select">
-    <option value="">— select a sequence —</option>
-  </select>
-  <div id="track-toggles">
-    <button class="track-btn active" data-track="Together">Together</button>
-    <button class="track-btn active" data-track="Separate_Leader">Leader</button>
-    <button class="track-btn active" data-track="Separate_Follower">Follower</button>
-    <button class="track-btn" data-track="Errors">Errors</button>
+  <div id="tabs">
+    <button class="tab-btn active" data-tab="viewer">Video Viewer</button>
+    <button class="tab-btn" data-tab="graph">Move Graph</button>
+  </div>
+  <div id="viewer-controls">
+    <select id="seq-select">
+      <option value="">— select a sequence —</option>
+    </select>
+    <div id="track-toggles">
+      <button class="track-btn active" data-track="Together">Together</button>
+      <button class="track-btn active" data-track="Separate_Leader">Leader</button>
+      <button class="track-btn active" data-track="Separate_Follower">Follower</button>
+      <button class="track-btn" data-track="Errors">Errors</button>
+    </div>
+  </div>
+  <div id="graph-controls" class="hidden">
+    <label>Min weight: <span id="weight-val">5</span>
+      <input type="range" id="weight-slider" min="1" max="50" value="5">
+    </label>
+    <label><input type="checkbox" id="selfloop-toggle" checked> Self-loops</label>
   </div>
 </header>
 
 <main>
-  <div id="left">
-    <div id="video-wrap">
-      <video id="player" controls></video>
+  <div id="viewer-panel">
+    <div id="left">
+      <div id="video-wrap">
+        <video id="player" controls></video>
+      </div>
+      <div id="now-playing">
+        <div id="now-label">Now playing</div>
+        <div id="now-moves"><div id="status">Select a sequence above to begin.</div></div>
+      </div>
     </div>
-    <div id="now-playing">
-      <div id="now-label">Now playing</div>
-      <div id="now-moves"><div id="status">Select a sequence above to begin.</div></div>
+    <div id="right">
+      <div id="right-header">All annotations</div>
+      <div id="annot-list"><div class="empty-state">No sequence loaded.</div></div>
     </div>
   </div>
-  <div id="right">
-    <div id="right-header">All annotations</div>
-    <div id="annot-list"><div class="empty-state">No sequence loaded.</div></div>
+  <div id="graph-panel">
+    <div id="graph-svg-wrap">
+      <div class="graph-tooltip" id="graph-tooltip"></div>
+    </div>
+    <div class="graph-legend" id="graph-legend"></div>
   </div>
 </main>
 
 <script>
+  // ── tab switching ────────────────────────────────────────────────────────────
+  const viewerPanel   = document.getElementById('viewer-panel');
+  const graphPanel    = document.getElementById('graph-panel');
+  const viewerCtrls   = document.getElementById('viewer-controls');
+  const graphCtrls    = document.getElementById('graph-controls');
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      viewerPanel.classList.toggle('hidden',  tab !== 'viewer');
+      graphPanel.classList.toggle('active',   tab === 'graph');
+      viewerCtrls.classList.toggle('hidden',  tab !== 'viewer');
+      graphCtrls.classList.toggle('hidden',   tab !== 'graph');
+      if (tab === 'graph' && !graphInitialised) initGraph();
+    });
+  });
+
+  // ── graph data (inlined from graph.json) ─────────────────────────────────────
+  const GRAPH_DATA = {"nodes":["Other","Open Break","Turn","Copa","Change of Directions","Hand Throw","Suzy Q","Walks Around","Enchufla","Arm Lock","Lasso","Natural Top","Check","XBL","Comb","Basic"],"edges":[{"from":"Basic","to":"Turn","weight":40},{"from":"Turn","to":"Other","weight":17},{"from":"Other","to":"Basic","weight":22},{"from":"Basic","to":"Basic","weight":106},{"from":"Turn","to":"Basic","weight":46},{"from":"Basic","to":"XBL","weight":50},{"from":"XBL","to":"Turn","weight":42},{"from":"Turn","to":"Hand Throw","weight":9},{"from":"Hand Throw","to":"Hand Throw","weight":12},{"from":"Hand Throw","to":"Basic","weight":4},{"from":"Turn","to":"Turn","weight":26},{"from":"XBL","to":"Basic","weight":28},{"from":"Hand Throw","to":"Turn","weight":6},{"from":"Basic","to":"Other","weight":16},{"from":"Other","to":"Other","weight":8},{"from":"Other","to":"Turn","weight":16},{"from":"Basic","to":"Hand Throw","weight":6},{"from":"Basic","to":"Suzy Q","weight":3},{"from":"Suzy Q","to":"Suzy Q","weight":7},{"from":"Suzy Q","to":"Basic","weight":4},{"from":"XBL","to":"Check","weight":8},{"from":"Check","to":"Basic","weight":2},{"from":"Hand Throw","to":"XBL","weight":16},{"from":"XBL","to":"XBL","weight":227},{"from":"Turn","to":"XBL","weight":22},{"from":"XBL","to":"Comb","weight":36},{"from":"Open Break","to":"XBL","weight":6},{"from":"Check","to":"XBL","weight":5},{"from":"Comb","to":"XBL","weight":32},{"from":"XBL","to":"Hand Throw","weight":14},{"from":"XBL","to":"Copa","weight":20},{"from":"Copa","to":"XBL","weight":28},{"from":"XBL","to":"Other","weight":26},{"from":"XBL","to":"Lasso","weight":2},{"from":"XBL","to":"Walks Around","weight":8},{"from":"Other","to":"XBL","weight":23},{"from":"Walks Around","to":"XBL","weight":11},{"from":"Turn","to":"Copa","weight":4},{"from":"Natural Top","to":"XBL","weight":5},{"from":"Other","to":"Copa","weight":3},{"from":"Turn","to":"Comb","weight":5},{"from":"XBL","to":"Open Break","weight":3},{"from":"Comb","to":"Walks Around","weight":3},{"from":"Copa","to":"Other","weight":2},{"from":"Other","to":"Hand Throw","weight":2},{"from":"Comb","to":"Other","weight":4},{"from":"XBL","to":"Arm Lock","weight":3},{"from":"Arm Lock","to":"XBL","weight":3},{"from":"XBL","to":"Natural Top","weight":4},{"from":"Hand Throw","to":"Copa","weight":2},{"from":"Natural Top","to":"Natural Top","weight":4},{"from":"Comb","to":"Turn","weight":3}]};
+
+  const NODE_COLOR = {
+    'XBL':                '#e05a2b',
+    'Basic':              '#7880a0',
+    'Side Basic':         '#7880a0',
+    'Cross-Back Basic':   '#7880a0',
+    'Back Basic':         '#7880a0',
+    'Turn':               '#4a9eff',
+    'Copa':               '#c77dff',
+    'Comb':               '#f0c040',
+    'Hand Throw':         '#ff6b6b',
+    'Natural Top':        '#40c8a8',
+    'Walks Around':       '#50c878',
+    'Suzy Q':             '#ffaa40',
+    'Check':              '#80c8ff',
+    'Open Break':         '#ff9090',
+    'Lasso':              '#ff80c0',
+    'Arm Lock':           '#c0a060',
+    'Change of Directions': '#9090ff',
+    'Enchufla':           '#ff60a0',
+    'Other':              '#4a4e6a',
+  };
+
+  // ── graph initialisation ─────────────────────────────────────────────────────
+  let graphInitialised = false;
+  let simulation = null;
+
+  function initGraph() {
+    graphInitialised = true;
+
+    const wrap    = document.getElementById('graph-svg-wrap');
+    const tooltip = document.getElementById('graph-tooltip');
+
+    // compute per-node total weight for sizing
+    const nodeWeight = {};
+    for (const e of GRAPH_DATA.edges) {
+      nodeWeight[e.from] = (nodeWeight[e.from] || 0) + e.weight;
+      nodeWeight[e.to]   = (nodeWeight[e.to]   || 0) + e.weight;
+    }
+    const maxW = Math.max(...Object.values(nodeWeight));
+    const nodeR = name => 10 + 22 * Math.sqrt((nodeWeight[name] || 1) / maxW);
+
+    // build legend
+    const legendEl = document.getElementById('graph-legend');
+    const legendItems = [
+      ['XBL',         NODE_COLOR['XBL']],
+      ['Basic',       NODE_COLOR['Basic']],
+      ['Turn',        NODE_COLOR['Turn']],
+      ['Copa',        NODE_COLOR['Copa']],
+      ['Comb',        NODE_COLOR['Comb']],
+      ['Hand Throw',  NODE_COLOR['Hand Throw']],
+      ['Natural Top', NODE_COLOR['Natural Top']],
+      ['Other moves', NODE_COLOR['Other']],
+    ];
+    legendEl.innerHTML = legendItems.map(([label, color]) =>
+      `<div class="graph-legend-row">
+         <div class="graph-legend-dot" style="background:${color}"></div>
+         <span>${label}</span>
+       </div>`
+    ).join('');
+
+    function getColor(name) {
+      return NODE_COLOR[name] || NODE_COLOR['Other'];
+    }
+
+    const svg = d3.select(wrap).append('svg');
+    const g   = svg.append('g');
+
+    // zoom
+    svg.call(d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => g.attr('transform', e.transform)));
+
+    // arrowhead markers (one per node color, to match edge color)
+    const defs = svg.append('defs');
+    const markerColors = [...new Set(GRAPH_DATA.nodes.map(n => getColor(n)))];
+    for (const color of markerColors) {
+      const safeId = 'arrow-' + color.replace('#','');
+      defs.append('marker')
+        .attr('id', safeId)
+        .attr('viewBox', '0 -4 10 8')
+        .attr('refX', 10).attr('refY', 0)
+        .attr('markerWidth', 6).attr('markerHeight', 6)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M0,-4L10,0L0,4')
+        .attr('fill', color);
+    }
+
+    let minWeight = 5;
+    let showSelfLoops = true;
+
+    function render() {
+      g.selectAll('*').remove();
+
+      const filteredEdges = GRAPH_DATA.edges.filter(e =>
+        e.weight >= minWeight && (showSelfLoops || e.from !== e.to)
+      );
+      const activeNodeNames = new Set(filteredEdges.flatMap(e => [e.from, e.to]));
+      const nodes = GRAPH_DATA.nodes
+        .filter(n => activeNodeNames.has(n))
+        .map(n => ({ id: n }));
+      const nodeMap = Object.fromEntries(nodes.map(n => [n.id, n]));
+      const links = filteredEdges
+        .filter(e => e.from !== e.to)
+        .map(e => ({ source: e.from, target: e.to, weight: e.weight }));
+      const selfLoops = filteredEdges.filter(e => e.from === e.to);
+
+      const maxEdgeW = Math.max(...filteredEdges.map(e => e.weight), 1);
+      const edgeWidth = w => 1 + 6 * Math.sqrt(w / maxEdgeW);
+
+      // ── simulation ────────────────────────────────────────────────────────
+      if (simulation) simulation.stop();
+      simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(d => d.id)
+          .distance(d => 100 + 300 / Math.sqrt(d.weight))
+          .strength(0.4))
+        .force('charge', d3.forceManyBody().strength(-400))
+        .force('center', d3.forceCenter(wrap.clientWidth / 2, wrap.clientHeight / 2))
+        .force('collide', d3.forceCollide(d => nodeR(d.id) + 8));
+
+      // ── draw links ────────────────────────────────────────────────────────
+      // For bidirectional pairs, curve both edges so they don't overlap
+      const pairSet = new Set(links.map(l =>
+        [l.source, l.target].sort().join('|')
+      ));
+      const isBidi = (s, t) => {
+        const key = [s, t].sort().join('|');
+        return links.some(l => {
+          const ls = typeof l.source === 'object' ? l.source.id : l.source;
+          const lt = typeof l.target === 'object' ? l.target.id : l.target;
+          return ls === t && lt === s;
+        });
+      };
+
+      const link = g.append('g').selectAll('path')
+        .data(links).join('path')
+        .attr('fill', 'none')
+        .attr('stroke', d => {
+          const src = typeof d.source === 'object' ? d.source.id : d.source;
+          return getColor(src);
+        })
+        .attr('stroke-opacity', 0.55)
+        .attr('stroke-width', d => edgeWidth(d.weight))
+        .attr('marker-end', d => {
+          const src = typeof d.source === 'object' ? d.source.id : d.source;
+          return `url(#arrow-${getColor(src).replace('#','')})`;
+        })
+        .on('mousemove', (event, d) => {
+          const src = typeof d.source === 'object' ? d.source.id : d.source;
+          const tgt = typeof d.target === 'object' ? d.target.id : d.target;
+          showTooltip(event, `<b>${src}</b> → <b>${tgt}</b><br>count: ${d.weight}`);
+        })
+        .on('mouseleave', hideTooltip);
+
+      // ── self-loop arcs ────────────────────────────────────────────────────
+      const loopArc = g.append('g').selectAll('path')
+        .data(selfLoops).join('path')
+        .attr('fill', 'none')
+        .attr('stroke', d => getColor(d.from))
+        .attr('stroke-opacity', 0.6)
+        .attr('stroke-width', d => edgeWidth(d.weight))
+        .on('mousemove', (event, d) => {
+          showTooltip(event, `<b>${d.from}</b> → self<br>count: ${d.weight}`);
+        })
+        .on('mouseleave', hideTooltip);
+
+      // ── node groups ───────────────────────────────────────────────────────
+      const node = g.append('g').selectAll('g')
+        .data(nodes).join('g')
+        .call(d3.drag()
+          .on('start', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+          })
+          .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+          .on('end', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+          })
+        );
+
+      node.append('circle')
+        .attr('r', d => nodeR(d.id))
+        .attr('fill', d => getColor(d.id))
+        .attr('fill-opacity', 0.18)
+        .attr('stroke', d => getColor(d.id))
+        .attr('stroke-width', 2)
+        .on('mousemove', (event, d) => {
+          const out = GRAPH_DATA.edges
+            .filter(e => e.from === d.id && e.weight >= minWeight)
+            .sort((a, b) => b.weight - a.weight)
+            .slice(0, 5)
+            .map(e => `→ ${e.to}: ${e.weight}`).join('<br>');
+          showTooltip(event, `<b>${d.id}</b><br>${out}`);
+        })
+        .on('mouseleave', hideTooltip);
+
+      node.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'central')
+        .attr('font-size', d => Math.max(9, Math.min(13, nodeR(d.id) * 0.55)) + 'px')
+        .attr('fill', d => getColor(d.id))
+        .attr('pointer-events', 'none')
+        .text(d => d.id);
+
+      // ── tick ──────────────────────────────────────────────────────────────
+      simulation.on('tick', () => {
+        link.attr('d', d => {
+          const sx = d.source.x, sy = d.source.y;
+          const tx = d.target.x, ty = d.target.y;
+          const tr = nodeR(d.target.id);
+          const dx = tx - sx, dy = ty - sy;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          // end point: stop at node edge (account for arrowhead)
+          const endX = tx - (dx / dist) * (tr + 10);
+          const endY = ty - (dy / dist) * (tr + 10);
+          // curve offset: perpendicular, stronger when bidirectional
+          const bidir = isBidi(
+            typeof d.source === 'object' ? d.source.id : d.source,
+            typeof d.target === 'object' ? d.target.id : d.target
+          );
+          const offset = bidir ? 30 : 0;
+          const cx = (sx + endX) / 2 - (dy / dist) * offset;
+          const cy = (sy + endY) / 2 + (dx / dist) * offset;
+          return `M${sx},${sy} Q${cx},${cy} ${endX},${endY}`;
+        });
+
+        loopArc.attr('d', d => {
+          const n = nodeMap[d.from];
+          if (!n) return '';
+          const r = nodeR(d.from);
+          const x = n.x, y = n.y;
+          const sweep = r * 1.4;
+          return `M ${x + r * 0.5},${y - r * 0.5}
+                  C ${x + sweep * 2},${y - sweep * 2}
+                    ${x + sweep * 2},${y + sweep}
+                    ${x + r * 0.5},${y + r * 0.5}`;
+        });
+
+        node.attr('transform', d => `translate(${d.x},${d.y})`);
+      });
+    }
+
+    // ── controls ─────────────────────────────────────────────────────────────
+    const slider = document.getElementById('weight-slider');
+    const weightVal = document.getElementById('weight-val');
+    slider.addEventListener('input', () => {
+      minWeight = +slider.value;
+      weightVal.textContent = minWeight;
+      render();
+    });
+    document.getElementById('selfloop-toggle').addEventListener('change', e => {
+      showSelfLoops = e.target.checked;
+      render();
+    });
+
+    // ── tooltip helpers ───────────────────────────────────────────────────────
+    function showTooltip(event, html) {
+      tooltip.innerHTML = html;
+      tooltip.style.opacity = '1';
+      const x = event.offsetX + 14, y = event.offsetY - 10;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top  = y + 'px';
+    }
+    function hideTooltip() { tooltip.style.opacity = '0'; }
+
+    render();
+  }
+
   const BASE = 'https://huggingface.co/datasets/Rosie-Lab/compas3d/resolve/main';
 
   // ── sequence catalogue (only confirmed-annotated sequences) ─────────────────
