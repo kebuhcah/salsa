@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoMPAS3D Salsa Viewer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --accent: #e05a2b;
+      --accent2: #f0a070;
+      --text: #e8eaf0;
+      --muted: #7880a0;
+      --border: #2d3150;
+      --together: #e05a2b;
+      --leader: #4a9eff;
+      --follower: #c77dff;
+      --error: #ff6b6b;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--accent2);
+      white-space: nowrap;
+    }
+
+    #seq-select {
+      flex: 1;
+      max-width: 420px;
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    #track-toggles {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .track-btn {
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      font-size: 0.78rem;
+      cursor: pointer;
+      opacity: 0.45;
+      transition: opacity 0.15s;
+    }
+    .track-btn.active { opacity: 1; }
+    .track-btn[data-track="Together"]          { background: #2a1510; border-color: var(--together); color: var(--together); }
+    .track-btn[data-track="Separate_Leader"]   { background: #0d1e33; border-color: var(--leader);   color: var(--leader); }
+    .track-btn[data-track="Separate_Follower"] { background: #1e0f2e; border-color: var(--follower); color: var(--follower); }
+    .track-btn[data-track="Errors"]            { background: #2e1010; border-color: var(--error);    color: var(--error); }
+
+    main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      gap: 0;
+    }
+
+    /* ── left panel ── */
+    #left {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 16px;
+      gap: 14px;
+    }
+
+    #video-wrap {
+      flex: 1;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    #player {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    #now-playing {
+      flex-shrink: 0;
+      min-height: 80px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    #now-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    #now-moves {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .now-move {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .now-move.together  { color: var(--together); }
+    .now-move.leader    { color: var(--leader); }
+    .now-move.follower  { color: var(--follower); }
+    .now-move.error     { color: var(--error); }
+
+    #status {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── right panel ── */
+    #right {
+      width: 320px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    #right-header {
+      padding: 10px 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    #annot-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 0;
+      scroll-behavior: smooth;
+    }
+
+    #annot-list::-webkit-scrollbar { width: 4px; }
+    #annot-list::-webkit-scrollbar-track { background: transparent; }
+    #annot-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .annot-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 7px 14px;
+      cursor: pointer;
+      border-left: 2px solid transparent;
+      transition: background 0.1s;
+    }
+    .annot-row:hover { background: var(--surface2); }
+    .annot-row.active {
+      background: var(--surface2);
+    }
+    .annot-row.active.together  { border-left-color: var(--together); }
+    .annot-row.active.leader    { border-left-color: var(--leader); }
+    .annot-row.active.follower  { border-left-color: var(--follower); }
+    .annot-row.active.error     { border-left-color: var(--error); }
+
+    .annot-time {
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 1px;
+      min-width: 50px;
+      font-variant-numeric: tabular-nums;
+    }
+    .annot-row.active .annot-time { color: var(--accent2); }
+
+    .annot-text {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      color: var(--text);
+      opacity: 0.7;
+    }
+    .annot-row.active .annot-text { opacity: 1; }
+
+    .annot-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-right: 4px;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
+    .badge-leader   { background: #0d1e33; color: var(--leader); }
+    .badge-follower { background: #1e0f2e; color: var(--follower); }
+    .badge-error    { background: #2e1010; color: var(--error); }
+
+    .empty-state {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CoMPAS3D Salsa</h1>
+  <select id="seq-select">
+    <option value="">— select a sequence —</option>
+  </select>
+  <div id="track-toggles">
+    <button class="track-btn active" data-track="Together">Together</button>
+    <button class="track-btn active" data-track="Separate_Leader">Leader</button>
+    <button class="track-btn active" data-track="Separate_Follower">Follower</button>
+    <button class="track-btn" data-track="Errors">Errors</button>
+  </div>
+</header>
+
+<main>
+  <div id="left">
+    <div id="video-wrap">
+      <video id="player" controls></video>
+    </div>
+    <div id="now-playing">
+      <div id="now-label">Now playing</div>
+      <div id="now-moves"><div id="status">Select a sequence above to begin.</div></div>
+    </div>
+  </div>
+  <div id="right">
+    <div id="right-header">All annotations</div>
+    <div id="annot-list"><div class="empty-state">No sequence loaded.</div></div>
+  </div>
+</main>
+
+<script>
+  const BASE = 'https://huggingface.co/datasets/Rosie-Lab/compas3d/resolve/main';
+
+  // ── sequence catalogue (only confirmed-annotated sequences) ─────────────────
+  const sequences = [
+    // Beginner — Pair 1
+    { pair: 1, song: 1, take: 1, level: 'Beginner' },
+    { pair: 1, song: 1, take: 2, level: 'Beginner' },
+    { pair: 1, song: 2, take: 1, level: 'Beginner' },
+    { pair: 1, song: 2, take: 2, level: 'Beginner' },
+    { pair: 1, song: 3, take: 1, level: 'Beginner' },
+    { pair: 1, song: 3, take: 2, level: 'Beginner' },
+    { pair: 1, song: 4, take: 1, level: 'Beginner' },
+    // Intermediate — Pair 2
+    { pair: 2, song: 1, take: 1, level: 'Intermediate' },
+    { pair: 2, song: 1, take: 2, level: 'Intermediate' },
+    { pair: 2, song: 2, take: 1, level: 'Intermediate' },
+    { pair: 2, song: 2, take: 2, level: 'Intermediate' },
+    { pair: 2, song: 3, take: 1, level: 'Intermediate' },
+    { pair: 2, song: 3, take: 2, level: 'Intermediate' },
+    { pair: 2, song: 4, take: 1, level: 'Intermediate' },
+    { pair: 2, song: 4, take: 2, level: 'Intermediate' },
+    // Professional — Pair 5
+    { pair: 5, song: 1, take: 1, level: 'Professional' },
+    { pair: 5, song: 1, take: 2, level: 'Professional' },
+    { pair: 5, song: 2, take: 1, level: 'Professional' },
+    { pair: 5, song: 2, take: 2, level: 'Professional' },
+  ];
+
+  function seqId(s) { return `Pair${s.pair}_song${s.song}_take${s.take}`; }
+  function seqUrl(s, ext) {
+    const id = seqId(s);
+    return `${BASE}/Pair${s.pair}/${id}/${id}.${ext}`;
+  }
+
+  // ── populate select ─────────────────────────────────────────────────────────
+  const select = document.getElementById('seq-select');
+  let lastLevel = null;
+  for (const s of sequences) {
+    if (s.level !== lastLevel) {
+      const og = document.createElement('optgroup');
+      og.label = s.level;
+      select.appendChild(og);
+      lastLevel = s.level;
+    }
+    const opt = document.createElement('option');
+    opt.value = seqId(s);
+    opt.textContent = `${seqId(s)}`;
+    opt.dataset.pair = s.pair;
+    opt.dataset.song = s.song;
+    opt.dataset.take = s.take;
+    select.lastChild.appendChild(opt);
+  }
+
+  // ── state ───────────────────────────────────────────────────────────────────
+  const KNOWN = new Set(['Together', 'Separate_Leader', 'Separate_Follower', 'Errors']);
+  let activeTracks = new Set(['Together', 'Separate_Leader', 'Separate_Follower']);
+  let allAnnotations = [];   // parsed, all tracks
+  let rowEls = [];           // DOM rows in order matching filtered annotations
+  let filteredAnnotations = []; // currently visible
+  let lastActiveRows = new Set();
+
+  const player = document.getElementById('player');
+  const nowMoves = document.getElementById('now-moves');
+  const annotList = document.getElementById('annot-list');
+
+  // ── track toggles ───────────────────────────────────────────────────────────
+  document.querySelectorAll('.track-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const track = btn.dataset.track;
+      if (activeTracks.has(track)) activeTracks.delete(track);
+      else activeTracks.add(track);
+      btn.classList.toggle('active', activeTracks.has(track));
+      rebuildList();
+    });
+  });
+
+  // ── parse annotations ───────────────────────────────────────────────────────
+  function parseAnnotations(text) {
+    const rows = [];
+    for (const line of text.split('\n')) {
+      const cols = line.split('\t');
+      if (cols.length < 9) continue;
+      const category = cols[0].trim();
+      if (!KNOWN.has(category)) continue;
+      const startSec = parseFloat(cols[3]);
+      const endSec   = parseFloat(cols[5]);
+      if (isNaN(startSec) || isNaN(endSec)) continue;
+      rows.push({ category, startSec, endSec,
+                  startTs: cols[2].trim(), description: cols[8].trim() });
+    }
+    return rows.sort((a, b) => a.startSec - b.startSec || a.category.localeCompare(b.category));
+  }
+
+  function trackClass(category) {
+    return { Together: 'together', Separate_Leader: 'leader',
+             Separate_Follower: 'follower', Errors: 'error' }[category] ?? '';
+  }
+
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${String(s).padStart(2, '0')}`;
+  }
+
+  // ── build annotation list ───────────────────────────────────────────────────
+  function rebuildList() {
+    filteredAnnotations = allAnnotations.filter(a => activeTracks.has(a.category));
+    rowEls = [];
+    lastActiveRows.clear();
+    annotList.innerHTML = '';
+
+    if (!filteredAnnotations.length) {
+      annotList.innerHTML = '<div class="empty-state">No annotations for selected tracks.</div>';
+      return;
+    }
+
+    for (const ann of filteredAnnotations) {
+      const cls = trackClass(ann.category);
+      const div = document.createElement('div');
+      div.className = `annot-row ${cls}`;
+      div.innerHTML = `
+        <span class="annot-time">${formatTime(ann.startSec)}</span>
+        <span class="annot-text">${badge(ann.category)}${escHtml(ann.description)}</span>
+      `;
+      div.addEventListener('click', () => { player.currentTime = ann.startSec; player.play(); });
+      annotList.appendChild(div);
+      rowEls.push(div);
+    }
+
+    // re-apply current time highlighting
+    updateHighlight(player.currentTime);
+  }
+
+  function badge(category) {
+    if (category === 'Separate_Leader')   return '<span class="annot-badge badge-leader">Leader</span>';
+    if (category === 'Separate_Follower') return '<span class="annot-badge badge-follower">Follower</span>';
+    if (category === 'Errors')            return '<span class="annot-badge badge-error">Error</span>';
+    return '';
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ── timeupdate ──────────────────────────────────────────────────────────────
+  player.addEventListener('timeupdate', () => updateHighlight(player.currentTime));
+
+  function updateHighlight(t) {
+    const newActive = new Set();
+    const activeAnns = [];
+
+    for (let i = 0; i < filteredAnnotations.length; i++) {
+      const a = filteredAnnotations[i];
+      if (a.startSec <= t && t < a.endSec) {
+        newActive.add(i);
+        activeAnns.push(a);
+      }
+    }
+
+    // update row classes only when the active set changes
+    if (!setsEqual(newActive, lastActiveRows)) {
+      for (const i of lastActiveRows) rowEls[i]?.classList.remove('active');
+      for (const i of newActive)      rowEls[i]?.classList.add('active');
+      lastActiveRows = newActive;
+
+      // scroll first active row into view
+      const firstIdx = Math.min(...newActive);
+      if (rowEls[firstIdx]) {
+        rowEls[firstIdx].scrollIntoView({ block: 'nearest' });
+      }
+
+      // update now-playing panel
+      renderNow(activeAnns);
+    }
+  }
+
+  function renderNow(anns) {
+    if (!anns.length) {
+      nowMoves.innerHTML = '<span style="color:var(--muted);font-size:.9rem">—</span>';
+      return;
+    }
+    nowMoves.innerHTML = anns.map(a => {
+      const cls = trackClass(a.category);
+      const prefix = a.category === 'Separate_Leader' ? '<small style="opacity:.6">Leader · </small>'
+                   : a.category === 'Separate_Follower' ? '<small style="opacity:.6">Follower · </small>'
+                   : a.category === 'Errors' ? '<small style="opacity:.6">Error · </small>'
+                   : '';
+      return `<div class="now-move ${cls}">${prefix}${escHtml(a.description)}</div>`;
+    }).join('');
+  }
+
+  function setsEqual(a, b) {
+    if (a.size !== b.size) return false;
+    for (const v of a) if (!b.has(v)) return false;
+    return true;
+  }
+
+  // ── load sequence ───────────────────────────────────────────────────────────
+  select.addEventListener('change', async () => {
+    const opt = select.selectedOptions[0];
+    if (!opt.dataset.pair) return;
+
+    const s = { pair: +opt.dataset.pair, song: +opt.dataset.song, take: +opt.dataset.take };
+
+    // set video
+    player.src = seqUrl(s, 'mp4');
+    player.load();
+
+    // reset UI
+    allAnnotations = [];
+    annotList.innerHTML = '<div class="empty-state">Loading annotations…</div>';
+    nowMoves.innerHTML = '<span id="status" style="color:var(--muted);font-size:.9rem">Loading…</span>';
+
+    try {
+      const res = await fetch(seqUrl(s, 'txt'));
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      allAnnotations = parseAnnotations(text);
+      rebuildList();
+      nowMoves.innerHTML = '<span style="color:var(--muted);font-size:.9rem">Press play to begin.</span>';
+    } catch (err) {
+      annotList.innerHTML = `<div class="empty-state">Could not load annotations.<br><small>${err.message}</small></div>`;
+      nowMoves.innerHTML = '<span style="color:var(--error);font-size:.85rem">Annotation load failed.</span>';
+    }
+  });
+</script>
+</body>
+</html>

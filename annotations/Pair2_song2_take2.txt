@@ -1,0 +1,85 @@
+Together	Leader&Follower	00:00:00.000	0.0	00:00:01.660	1.66	00:00:01.660	1.66	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:01.670	1.67	00:00:04.065	4.065	00:00:02.395	2.395	XBL with a right (outside) turn for the follower
+Together	Leader&Follower	00:00:04.065	4.065	00:00:04.070	4.07	00:00:00.005	0.005	
+Together	Leader&Follower	00:00:04.070	4.07	00:00:06.460	6.46	00:00:02.390	2.39	XBL with a left (inside) turn for the follower with normal open hold, hands down
+Together	Leader&Follower	00:00:06.470	6.47	00:00:08.860	8.86	00:00:02.390	2.39	Right turn for the leader, right turn for the follower, both hands, crossed hold ends with right hand throw
+Together	Leader&Follower	00:00:08.860	8.86	00:00:11.250	11.25	00:00:02.390	2.39	XBL with a left (inside) turn for the follower, late right turn for the leader
+Together	Leader&Follower	00:00:11.250	11.25	00:00:13.630	13.63	00:00:02.380	2.38	Right turn for the leader with crossed hold, ending with comb on the follower with leader's right hand
+Together	Leader&Follower	00:00:13.630	13.63	00:00:16.020	16.02	00:00:02.390	2.39	XBL with a left (inside) with crossed hold while hands change, Check by holding the follower's shoulder
+Together	Leader&Follower	00:00:16.020	16.02	00:00:18.400	18.4	00:00:02.380	2.38	Right turn for the follower, normal open hold
+Together	Leader&Follower	00:00:18.400	18.4	00:00:20.960	20.96	00:00:02.560	2.56	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:00:20.960	20.96	00:00:23.430	23.43	00:00:02.470	2.47	XBL with a left (inside) turn for the follower while hands change starts with right hand throw for the follower, ends with Check by holding the follower's hand (hands down)
+Together	Leader&Follower	00:00:23.430	23.43	00:00:25.770	25.77	00:00:02.340	2.34	Right turn for the follower, comb on the follower with the leader's right hand, crossed hold
+Together	Leader&Follower	00:00:25.780	25.78	00:00:28.240	28.24	00:00:02.460	2.46	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:00:28.240	28.24	00:00:30.690	30.69	00:00:02.450	2.45	XBL with a right (outside) turn for the follower with hands change
+Together	Leader&Follower	00:00:30.690	30.69	00:00:33.010	33.01	00:00:02.320	2.32	Butterfly Copa wth left (inside) turn for the follower
+Together	Leader&Follower	00:00:33.010	33.01	00:00:35.520	35.52	00:00:02.510	2.51	Change of Directions (Swap Position)
+Together	Leader&Follower	00:00:35.530	35.53	00:00:38.030	38.03	00:00:02.500	2.5	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:38.030	38.03	00:00:40.490	40.49	00:00:02.460	2.46	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:00:40.490	40.49	00:00:42.950	42.95	00:00:02.460	2.46	XBL with a right (outside) turn for the follower
+Together	Leader&Follower	00:00:42.950	42.95	00:00:45.410	45.41	00:00:02.460	2.46	XBL with a left (inside) with crossed hold while hands change, Check by holding the follower's hand 
+Together	Leader&Follower	00:00:45.410	45.41	00:00:47.700	47.7	00:00:02.290	2.29	Right turn for the follower, comb on the follower with the leader's right hand, normal onen hold
+Together	Leader&Follower	00:00:47.710	47.71	00:00:50.010	50.01	00:00:02.300	2.3	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:00:50.010	50.01	00:00:52.470	52.47	00:00:02.460	2.46	XBL with a right (outside) turn for the follower with hands change, ends with right hand throw for the follower, normal open hold 
+Together	Leader&Follower	00:00:52.480	52.48	00:00:54.850	54.85	00:00:02.370	2.37	XBL with a left (inside) turn for the follower, both hands, crossed hold, ends with Check by holding the follower's hand (hands down)
+Together	Leader&Follower	00:00:54.850	54.85	00:00:57.360	57.36	00:00:02.510	2.51	XBL with a left (inside) turn for the follower with late half right turn for the leader
+Together	Leader&Follower	00:00:57.360	57.36	00:00:59.750	59.75	00:00:02.390	2.39	Change of Directions (Swap Position) for the follower with normal open hold sliding from the follower's left hand to right hand
+Together	Leader&Follower	00:00:59.750	59.75	00:01:02.150	62.15	00:00:02.400	2.4	XBL with a left (inside) turn for the follower, crossed hold with both hands, ends with Left Half-HL for the follower
+Together	Leader&Follower	00:01:02.150	62.15	00:01:04.580	64.58	00:00:02.430	2.43	XBL with a left (inside) turn for the follower after the Left Half-HL for the follower
+Together	Leader&Follower	00:01:04.580	64.58	00:01:07.010	67.01	00:00:02.430	2.43	XBL with normal open hold
+Together	Leader&Follower	00:01:07.010	67.01	00:01:09.370	69.37	00:00:02.360	2.36	XBL with a right (outside) turn for the follower, facing the same direction on the right side of the leader, ends with right hand drop for the follower and right hand throw for the follower
+Together	Leader&Follower	00:01:09.370	69.37	00:01:11.690	71.69	00:00:02.320	2.32	Left turn for the follower
+Together	Leader&Follower	00:01:11.700	71.7	00:01:14.170	74.17	00:00:02.470	2.47	Double right turn for the follower with normal open hold
+Together	Leader&Follower	00:01:14.170	74.17	00:01:16.440	76.44	00:00:02.270	2.27	Left hand throw for the follower to Left HL for the follower
+Together	Leader&Follower	00:01:16.440	76.44	00:01:18.740	78.74	00:00:02.300	2.3	XBL with a left (inside) turn for the follower from Left HL for the follower
+Together	Leader&Follower	00:01:18.740	78.74	00:01:21.090	81.09	00:00:02.350	2.35	Change of Directions (Swap Position) for the follower behind the leader to left HL for the leader ends with right elbow lock for the follower
+Together	Leader&Follower	00:01:21.090	81.09	00:01:23.450	83.45	00:00:02.360	2.36	Right hand throw from elbow lock for the follower
+Together	Leader&Follower	00:01:23.450	83.45	00:01:25.890	85.89	00:00:02.440	2.44	Comb on the follower with the leader's right hand, XBL with a left (inside) turn for the follower with crossed hold, ends with Check on the follower's shoulder
+Together	Leader&Follower	00:01:25.890	85.89	00:01:28.260	88.26	00:00:02.370	2.37	Right turn for the follower, crossed hold, ends with comb on the leader with his left hand
+Together	Leader&Follower	00:01:28.270	88.27	00:01:30.780	90.78	00:00:02.510	2.51	XBL with normal open hold
+Together	Leader&Follower	00:01:30.780	90.78	00:01:33.120	93.12	00:00:02.340	2.34	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:33.120	93.12	00:01:35.470	95.47	00:00:02.350	2.35	Change of Directions (Swap Position) for the follower with normal open hold
+Together	Leader&Follower	00:01:35.470	95.47	00:01:37.860	97.86	00:00:02.390	2.39	Double right turn for the follower with normal open hold into left HL for the follower
+Together	Leader&Follower	00:01:37.860	97.86	00:01:40.130	100.13	00:00:02.270	2.27	Butterfly right turn for the follower and left turn for the follower Facing perpendicular to the line of dance ends with comb on the follower with leader's right hand
+Together	Leader&Follower	00:01:40.130	100.13	00:01:42.520	102.52	00:00:02.390	2.39	Change of Directions (Swap Position) for the follower with normal open hold
+Together	Leader&Follower	00:01:42.520	102.52	00:01:44.780	104.78	00:00:02.260	2.26	XBL with a left (inside) with crossed hold, Check by holding the follower's both hand (open hands down, Embrace for the follower in a shadow)
+Together	Leader&Follower	00:01:44.780	104.78	00:01:47.190	107.19	00:00:02.410	2.41	Right turn for the follower, crossed hold, ends with comb on the leader with his left hand
+Together	Leader&Follower	00:01:47.190	107.19	00:01:49.610	109.61	00:00:02.420	2.42	XBL with normal open hold
+Together	Leader&Follower	00:01:49.610	109.61	00:01:51.880	111.88	00:00:02.270	2.27	XBL with a right (outside) turn for the follower
+Together	Leader&Follower	00:01:51.890	111.89	00:01:54.240	114.24	00:00:02.350	2.35	XBL with a left (inside) turn for the follower ends with left hands throw to Embrace for the follower facing the line of dance with crossed hold
+Together	Leader&Follower	00:01:54.240	114.24	00:01:56.630	116.63	00:00:02.390	2.39	XBL with a left (inside) turn for the follower from Embrace for the follower facing the line of dance with crossed hold
+Together	Leader&Follower	00:01:56.630	116.63	00:01:58.910	118.91	00:00:02.280	2.28	Right turn for the leader with normal open hold, ending with comb on the follower with leader's right hand
+Together	Leader&Follower	00:01:58.910	118.91	00:02:01.220	121.22	00:00:02.310	2.31	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:02:01.220	121.22	00:02:03.580	123.58	00:00:02.360	2.36	XBL with a right (outside) turn for the follower with hands change, ends with right hand throw for the follower, normal open hold
+Together	Leader&Follower	00:02:03.580	123.58	00:02:05.990	125.99	00:00:02.410	2.41	XBL with a left (inside) turn for the follower, late right turn for the leader
+Together	Leader&Follower	00:02:05.990	125.99	00:02:08.330	128.33	00:00:02.340	2.34	Right turn for the follower with arm lock with the leader's right hand
+Together	Leader&Follower	00:02:08.330	128.33	00:02:10.710	130.71	00:00:02.380	2.38	XBL with a left (inside) turn for the follower with crossed hold on the right side of the leader, both hands, ends with late right turn for the leader
+Together	Leader&Follower	00:02:10.710	130.71	00:02:13.000	133.0	00:00:02.290	2.29	Lasso on the follower with the leader's right hand ends with check by holding the follower's both hands (open hands down, Embrace for the follower in the shadow)
+Together	Leader&Follower	00:02:13.000	133.0	00:02:15.280	135.28	00:00:02.280	2.28	Standard copa
+Together	Leader&Follower	00:02:15.280	135.28	00:02:17.710	137.71	00:00:02.430	2.43	XBL with a right (outside) turn for the follower
+Together	Leader&Follower	00:02:17.720	137.72	00:02:19.940	139.94	00:00:02.220	2.22	XBL with a left (inside) turn for the follower, change of directions from facing one side perpendicular to the line of dance to another for the leader: to the left side of the of the follower
+Together	Leader&Follower	00:02:19.940	139.94	00:02:22.400	142.4	00:00:02.460	2.46	XBL with a right (outside) turn for the follower, ends with comb for the follower
+Together	Leader&Follower	00:02:22.400	142.4	00:02:24.580	144.58	00:00:02.180	2.18	XBL with a left (inside) with normal open hold, Check by holding the follower's hand
+Together	Leader&Follower	00:02:24.580	144.58	00:02:26.930	146.93	00:00:02.350	2.35	XBL with a left (inside) turn for the follower, ends with Check on the follower's shoulder by the leader's right hand
+Together	Leader&Follower	00:02:26.930	146.93	00:02:29.300	149.3	00:00:02.370	2.37	Right turn for the follower, crossed hold, ends with comb on the leader with his left hand
+Together	Leader&Follower	00:02:29.300	149.3	00:02:30.880	150.88	00:00:01.580	1.58	XBL with normal open hold
+Separate_Follower	Follower	00:00:00.000	0.0	00:00:01.660	1.66	00:00:01.660	1.66	Lady styling
+Separate_Follower	Follower	00:00:06.470	6.47	00:00:08.860	8.86	00:00:02.390	2.39	Lady styling
+Separate_Follower	Follower	00:00:13.630	13.63	00:00:16.020	16.02	00:00:02.390	2.39	Lady styling
+Separate_Follower	Follower	00:00:40.490	40.49	00:00:42.950	42.95	00:00:02.460	2.46	Lady styling
+Separate_Follower	Follower	00:00:42.950	42.95	00:00:45.410	45.41	00:00:02.460	2.46	Lady styling
+Separate_Follower	Follower	00:00:45.410	45.41	00:00:47.710	47.71	00:00:02.300	2.3	Lady styling
+Separate_Follower	Follower	00:00:50.010	50.01	00:00:52.470	52.47	00:00:02.460	2.46	Lady styling
+Separate_Follower	Follower	00:00:59.750	59.75	00:01:02.150	62.15	00:00:02.400	2.4	Lady styling
+Separate_Follower	Follower	00:01:02.150	62.15	00:01:04.580	64.58	00:00:02.430	2.43	Lady styling
+Separate_Follower	Follower	00:01:04.580	64.58	00:01:07.010	67.01	00:00:02.430	2.43	Lady styling
+Separate_Follower	Follower	00:01:21.100	81.1	00:01:23.460	83.46	00:00:02.360	2.36	Lady styling
+Separate_Follower	Follower	00:01:28.260	88.26	00:01:30.780	90.78	00:00:02.520	2.52	Lady styling
+Separate_Follower	Follower	00:01:40.130	100.13	00:01:42.520	102.52	00:00:02.390	2.39	Lady styling
+Separate_Follower	Follower	00:02:15.290	135.29	00:02:17.720	137.72	00:00:02.430	2.43	Lady styling
+Separate_Follower	Follower	00:02:19.950	139.95	00:02:22.400	142.4	00:00:02.450	2.45	Lady styling
+Separate_Follower	Follower	00:02:26.930	146.93	00:02:29.310	149.31	00:00:02.380	2.38	Lady styling
+Errors		00:00:30.690	30.69	00:00:32.990	32.99	00:00:02.300	2.3	Misread signals and failed move
+Errors		00:00:32.990	32.99	00:00:35.530	35.53	00:00:02.540	2.54	Off beat
+Errors		00:00:35.540	35.54	00:00:38.030	38.03	00:00:02.490	2.49	Off beat
+Errors		00:01:14.160	74.16	00:01:16.450	76.45	00:00:02.290	2.29	Off beat for the follower

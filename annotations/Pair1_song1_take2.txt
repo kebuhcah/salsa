@@ -1,0 +1,66 @@
+Together	Leader&Follower	00:00:00.000	0.0	00:00:02.180	2.18	00:00:02.180	2.18	Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+Together	Leader&Follower	00:00:02.180	2.18	00:00:04.620	4.62	00:00:02.440	2.44	Change of Directions (Swap Position) for the follower with crossed hold
+Together	Leader&Follower	00:00:04.620	4.62	00:00:07.230	7.23	00:00:02.610	2.61	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:07.230	7.23	00:00:09.660	9.66	00:00:02.430	2.43	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:09.660	9.66	00:00:12.140	12.14	00:00:02.480	2.48	Right turn for the leader, right turn for the follower, normal open hold
+Together	Leader&Follower	00:00:14.670	14.67	00:00:17.170	17.17	00:00:02.500	2.5	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:17.180	17.18	00:00:19.730	19.73	00:00:02.550	2.55	XBL with normal closed hold
+Together	Leader&Follower	00:00:19.730	19.73	00:00:22.260	22.26	00:00:02.530	2.53	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:22.260	22.26	00:00:24.780	24.78	00:00:02.520	2.52	XBL with normal closed hold
+Together	Leader&Follower	00:00:24.790	24.79	00:00:27.170	27.17	00:00:02.380	2.38	Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+Together	Leader&Follower	00:00:27.170	27.17	00:00:29.770	29.77	00:00:02.600	2.6	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:29.770	29.77	00:00:32.280	32.28	00:00:02.510	2.51	Change of Directions (Swap Position) for the follower with crossed hold
+Together	Leader&Follower	00:00:32.290	32.29	00:00:34.890	34.89	00:00:02.600	2.6	Right turn for the leader, crossed hold
+Together	Leader&Follower	00:00:34.900	34.9	00:00:37.290	37.29	00:00:02.390	2.39	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:37.290	37.29	00:00:39.890	39.89	00:00:02.600	2.6	Right turn for the follower, normal open hold
+Together	Leader&Follower	00:00:39.890	39.89	00:00:42.400	42.4	00:00:02.510	2.51	Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+Together	Leader&Follower	00:00:42.410	42.41	00:00:45.010	45.01	00:00:02.600	2.6	Change of Directions (Swap Position) for the follower with crossed hold
+Together	Leader&Follower	00:00:45.010	45.01	00:00:47.450	47.45	00:00:02.440	2.44	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:47.450	47.45	00:00:49.850	49.85	00:00:02.400	2.4	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:49.860	49.86	00:00:52.410	52.41	00:00:02.550	2.55	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:52.410	52.41	00:00:54.930	54.93	00:00:02.520	2.52	XBL with a right (outside) turn for the follower
+Together	Leader&Follower	00:00:54.940	54.94	00:00:57.610	57.61	00:00:02.670	2.67	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:57.610	57.61	00:00:59.970	59.97	00:00:02.360	2.36	Basic step, facing the line of dance
+Together	Leader&Follower	00:00:59.980	59.98	00:01:02.480	62.48	00:00:02.500	2.5	Right turn for the follower, normal open hold
+Together	Leader&Follower	00:01:02.490	62.49	00:01:05.129	65.129	00:00:02.639	2.639	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:05.140	65.14	00:01:07.490	67.49	00:00:02.350	2.35	XBL with a left (inside) turn for the follower
+Together	Leader&Follower	00:01:07.490	67.49	00:01:10.130	70.13	00:00:02.640	2.64	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:10.130	70.13	00:01:12.610	72.61	00:00:02.480	2.48	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:12.610	72.61	00:01:15.170	75.17	00:00:02.560	2.56	Change of Directions (Swap Position) for the follower with crossed hold
+Together	Leader&Follower	00:01:15.180	75.18	00:01:17.650	77.65	00:00:02.470	2.47	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:17.650	77.65	00:01:20.210	80.21	00:00:02.560	2.56	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:20.210	80.21	00:01:22.810	82.81	00:00:02.600	2.6	XBL with normal closed hold, the leader's right to the follower left, hands down
+Together	Leader&Follower	00:01:22.810	82.81	00:01:25.240	85.24	00:00:02.430	2.43	Basic step, facing the line of dance with normal closed hand
+Together	Leader&Follower	00:01:25.240	85.24	00:01:27.690	87.69	00:00:02.450	2.45	Basic step, facing the line of dance with normal closed hand
+Together	Leader&Follower	00:01:27.690	87.69	00:01:30.120	90.12	00:00:02.430	2.43	Right turn for the follower, normal closed hold
+Together	Leader&Follower	00:01:30.130	90.13	00:01:32.730	92.73	00:00:02.600	2.6	Right turn for the leader, normal open hold, hands change behind the leader, change of directions
+Together	Leader&Follower	00:01:32.730	92.73	00:01:35.440	95.44	00:00:02.710	2.71	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:35.450	95.45	00:01:37.840	97.84	00:00:02.390	2.39	Right turn for the leader, right turn for the follower, crossed hold
+Together	Leader&Follower	00:01:37.840	97.84	00:01:40.360	100.36	00:00:02.520	2.52	Change of Directions (Swap Position) with crossed hold
+Together	Leader&Follower	00:01:40.370	100.37	00:01:42.810	102.81	00:00:02.440	2.44	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:42.810	102.81	00:01:45.270	105.27	00:00:02.460	2.46	Double hand throw with crossed hold
+Together	Leader&Follower	00:01:45.270	105.27	00:01:47.800	107.8	00:00:02.530	2.53	Double hand throw with normal open hold
+Together	Leader&Follower	00:01:47.800	107.8	00:01:50.360	110.36	00:00:02.560	2.56	Double hand throw with crossed hold
+Together	Leader&Follower	00:01:50.370	110.37	00:01:52.910	112.91	00:00:02.540	2.54	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:52.920	112.92	00:01:55.400	115.4	00:00:02.480	2.48	Basic step, facing the line of dance
+Together	Leader&Follower	00:01:55.400	115.4	00:01:57.970	117.97	00:00:02.570	2.57	Right turn for the follower, normal open hold
+Together	Leader&Follower	00:01:57.970	117.97	00:02:00.480	120.48	00:00:02.510	2.51	Left turn for the follower
+Together	Leader&Follower	00:02:00.490	120.49	00:02:03.070	123.07	00:00:02.580	2.58	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:03.070	123.07	00:02:05.510	125.51	00:00:02.440	2.44	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:05.510	125.51	00:02:07.990	127.99	00:00:02.480	2.48	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:07.990	127.99	00:02:10.550	130.55	00:00:02.560	2.56	Left turn for the follower
+Together	Leader&Follower	00:02:10.550	130.55	00:02:13.060	133.06	00:00:02.510	2.51	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:13.070	133.07	00:02:15.550	135.55	00:00:02.480	2.48	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:15.550	135.55	00:02:18.200	138.2	00:00:02.650	2.65	Left turn for the follower
+Together	Leader&Follower	00:02:18.200	138.2	00:02:20.630	140.63	00:00:02.430	2.43	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:20.630	140.63	00:02:23.230	143.23	00:00:02.600	2.6	Change of Directions (Swap Position)
+Together	Leader&Follower	00:02:23.230	143.23	00:02:25.750	145.75	00:00:02.520	2.52	Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+Together	Leader&Follower	00:02:25.760	145.76	00:02:28.140	148.14	00:00:02.380	2.38	Basic step, facing the line of dance
+Together	Leader&Follower	00:02:28.150	148.15	00:02:30.697	150.697	00:00:02.547	2.547	Left turn for the leader
+Separate_Leader	Leader	00:00:12.140	12.14	00:00:14.670	14.67	00:00:02.530	2.53	Basic step, facing the line of dance
+Separate_Leader	Leader	00:00:45.010	45.01	00:00:47.450	47.45	00:00:02.440	2.44	Man styling
+Separate_Follower	Follower	00:00:12.140	12.14	00:00:14.670	14.67	00:00:02.530	2.53	Right turn
+Separate_Follower	Follower	00:00:45.010	45.01	00:00:47.450	47.45	00:00:02.440	2.44	Lady styling
+Errors		00:00:52.410	52.41	00:00:54.930	54.93	00:00:02.520	2.52	Mixed signals
+Errors		00:01:57.970	117.97	00:02:00.480	120.48	00:00:02.510	2.51	Mixed signals
+Errors		00:02:05.510	125.51	00:02:07.990	127.99	00:00:02.480	2.48	Mixed signals and failed move

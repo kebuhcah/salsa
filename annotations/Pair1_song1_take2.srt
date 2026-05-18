@@ -1,0 +1,242 @@
+1
+00:00:00,000 --> 00:00:02,180
+Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+
+2
+00:00:02,180 --> 00:00:04,620
+Change of Directions (Swap Position) for the follower with crossed hold
+
+3
+00:00:04,620 --> 00:00:07,230
+Basic step, facing the line of dance
+
+4
+00:00:07,230 --> 00:00:09,660
+Basic step, facing the line of dance
+
+5
+00:00:09,660 --> 00:00:12,140
+Right turn for the leader, right turn for the follower, normal open hold
+
+6
+00:00:12,140 --> 00:00:14,670
+[Leader] Basic step, facing the line of dance
+[Follower] Right turn
+
+7
+00:00:14,670 --> 00:00:17,170
+Basic step, facing the line of dance
+
+8
+00:00:17,180 --> 00:00:19,730
+XBL with normal closed hold
+
+9
+00:00:19,730 --> 00:00:22,260
+Basic step, facing the line of dance
+
+10
+00:00:22,260 --> 00:00:24,780
+XBL with normal closed hold
+
+11
+00:00:24,790 --> 00:00:27,170
+Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+
+12
+00:00:27,170 --> 00:00:29,770
+Basic step, facing the line of dance
+
+13
+00:00:29,770 --> 00:00:32,280
+Change of Directions (Swap Position) for the follower with crossed hold
+
+14
+00:00:32,290 --> 00:00:34,890
+Right turn for the leader, crossed hold
+
+15
+00:00:34,900 --> 00:00:37,290
+Basic step, facing the line of dance
+
+16
+00:00:37,290 --> 00:00:39,890
+Right turn for the follower, normal open hold
+
+17
+00:00:39,890 --> 00:00:42,400
+Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+
+18
+00:00:42,410 --> 00:00:45,010
+Change of Directions (Swap Position) for the follower with crossed hold
+
+19
+00:00:45,010 --> 00:00:47,450
+Basic step, facing the line of dance
+[Leader] Man styling
+[Follower] Lady styling
+
+20
+00:00:47,450 --> 00:00:49,850
+Basic step, facing the line of dance
+
+21
+00:00:49,860 --> 00:00:52,410
+Basic step, facing the line of dance
+
+22
+00:00:52,410 --> 00:00:54,930
+XBL with a right (outside) turn for the follower
+
+23
+00:00:54,940 --> 00:00:57,610
+Basic step, facing the line of dance
+
+24
+00:00:57,610 --> 00:00:59,970
+Basic step, facing the line of dance
+
+25
+00:00:59,980 --> 00:01:02,480
+Right turn for the follower, normal open hold
+
+26
+00:01:02,490 --> 00:01:05,129
+Basic step, facing the line of dance
+
+27
+00:01:05,140 --> 00:01:07,490
+XBL with a left (inside) turn for the follower
+
+28
+00:01:07,490 --> 00:01:10,130
+Basic step, facing the line of dance
+
+29
+00:01:10,130 --> 00:01:12,610
+Basic step, facing the line of dance
+
+30
+00:01:12,610 --> 00:01:15,170
+Change of Directions (Swap Position) for the follower with crossed hold
+
+31
+00:01:15,180 --> 00:01:17,650
+Basic step, facing the line of dance
+
+32
+00:01:17,650 --> 00:01:20,210
+Basic step, facing the line of dance
+
+33
+00:01:20,210 --> 00:01:22,810
+XBL with normal closed hold, the leader's right to the follower left, hands down
+
+34
+00:01:22,810 --> 00:01:25,240
+Basic step, facing the line of dance with normal closed hand
+
+35
+00:01:25,240 --> 00:01:27,690
+Basic step, facing the line of dance with normal closed hand
+
+36
+00:01:27,690 --> 00:01:30,120
+Right turn for the follower, normal closed hold
+
+37
+00:01:30,130 --> 00:01:32,730
+Right turn for the leader, normal open hold, hands change behind the leader, change of directions
+
+38
+00:01:32,730 --> 00:01:35,440
+Basic step, facing the line of dance
+
+39
+00:01:35,450 --> 00:01:37,840
+Right turn for the leader, right turn for the follower, crossed hold
+
+40
+00:01:37,840 --> 00:01:40,360
+Change of Directions (Swap Position) with crossed hold
+
+41
+00:01:40,370 --> 00:01:42,810
+Basic step, facing the line of dance
+
+42
+00:01:42,810 --> 00:01:45,270
+Double hand throw with crossed hold
+
+43
+00:01:45,270 --> 00:01:47,800
+Double hand throw with normal open hold
+
+44
+00:01:47,800 --> 00:01:50,360
+Double hand throw with crossed hold
+
+45
+00:01:50,370 --> 00:01:52,910
+Basic step, facing the line of dance
+
+46
+00:01:52,920 --> 00:01:55,400
+Basic step, facing the line of dance
+
+47
+00:01:55,400 --> 00:01:57,970
+Right turn for the follower, normal open hold
+
+48
+00:01:57,970 --> 00:02:00,480
+Left turn for the follower
+
+49
+00:02:00,490 --> 00:02:03,070
+Basic step, facing the line of dance
+
+50
+00:02:03,070 --> 00:02:05,510
+Basic step, facing the line of dance
+
+51
+00:02:05,510 --> 00:02:07,990
+Basic step, facing the line of dance
+
+52
+00:02:07,990 --> 00:02:10,550
+Left turn for the follower
+
+53
+00:02:10,550 --> 00:02:13,060
+Basic step, facing the line of dance
+
+54
+00:02:13,070 --> 00:02:15,550
+Basic step, facing the line of dance
+
+55
+00:02:15,550 --> 00:02:18,200
+Left turn for the follower
+
+56
+00:02:18,200 --> 00:02:20,630
+Basic step, facing the line of dance
+
+57
+00:02:20,630 --> 00:02:23,230
+Change of Directions (Swap Position)
+
+58
+00:02:23,230 --> 00:02:25,750
+Right turn for the leader, right turn for the follower, normal open hold, hands change behind the leader and then over the follower
+
+59
+00:02:25,760 --> 00:02:28,140
+Basic step, facing the line of dance
+
+60
+00:02:28,150 --> 00:02:30,697
+Left turn for the leader

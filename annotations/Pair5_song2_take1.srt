@@ -1,0 +1,315 @@
+1
+00:00:00,000 --> 00:00:01,960
+Basic step, facing the line of dance
+
+2
+00:00:01,960 --> 00:00:04,160
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+3
+00:00:04,160 --> 00:00:06,520
+Natural top
+[Follower] Lady styling
+
+4
+00:00:06,520 --> 00:00:08,960
+Natural top followed by Natural Top
+[Follower] Lady styling
+
+5
+00:00:08,960 --> 00:00:11,400
+Natural top followed by Natural Top
+
+6
+00:00:11,400 --> 00:00:13,920
+Natural top
+
+7
+00:00:13,920 --> 00:00:16,200
+XBL with a left (inside) turn for the follower
+[Follower] Lady styling
+
+8
+00:00:16,200 --> 00:00:18,640
+Right turn for the follower, crossed hold
+[Follower] Lady styling
+
+9
+00:00:18,640 --> 00:00:21,080
+Change of Directions (Swap Position) for the follower with crossed hold, comb on the follower, late right turn for the leader
+[Follower] Lady styling
+
+10
+00:00:21,080 --> 00:00:23,520
+Right turn for the follower, right turn for the leader, crossed hold, hands change over the follower and then behind the leader
+[Follower] Lady styling
+
+11
+00:00:23,520 --> 00:00:25,920
+XBL with a left (inside) turn for the follower with no hands holding the waist of the follower
+[Follower] Lady styling
+
+12
+00:00:25,920 --> 00:00:28,360
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+13
+00:00:28,360 --> 00:00:30,800
+XBL with a right (outside) turn for the follower on the right side of the leader, both hands hold, ends with late left turn for the leader
+
+14
+00:00:30,800 --> 00:00:33,160
+XBL with a left (inside) turn for the follower with double hand throw
+[Leader] Man styling
+[Follower] Lady styling
+
+15
+00:00:33,160 --> 00:00:35,640
+[Leader] Basic step, facing the line of dance
+[Follower] Quick left turn
+
+16
+00:00:35,640 --> 00:00:38,120
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+17
+00:00:38,120 --> 00:00:40,520
+Right turn for the follower, crossed hold
+[Follower] Lady styling
+
+18
+00:00:40,520 --> 00:00:42,920
+Walking back in a circle with a partner in a right sombrero hold
+[Follower] Lady styling
+
+19
+00:00:42,920 --> 00:00:45,320
+Walking back in a circle with a partner in a right sombrero hold
+[Follower] Lady styling
+
+20
+00:00:45,320 --> 00:00:47,720
+Walking forward in a circle with a partner in a right sombrero hold
+[Follower] Lady styling
+
+21
+00:00:47,720 --> 00:00:50,060
+XBL with a right (outside) turn for the follower
+[Follower] Lady styling
+
+22
+00:00:50,060 --> 00:00:52,580
+XBL with a left (inside) turn for the follower with crossed hold, ends with left hand throw for the follower and a right half-turn for the follower
+[Leader] Man styling
+[Follower] Lady styling
+
+23
+00:00:52,580 --> 00:00:54,940
+XBL with a left (inside) turn for the follower, late right turn for the leader
+[Follower] Lady styling
+
+24
+00:00:54,940 --> 00:00:57,300
+XBL with a left (inside) turn for the follower with no hands holding the waist of the follower
+
+25
+00:00:57,300 --> 00:00:59,660
+XBL with a left (inside) turn for the follower with no hands holding the waist of the follower, ends with late half right turn for the leader still holding the waist of the follower
+[Follower] Lady styling
+
+26
+00:00:59,660 --> 00:01:02,100
+XBL with a right (outside) turn for the follower with no hands holding the waist of the follower, ends with late half right turn for the leader still holding the waist of the follower
+[Leader] Man styling
+[Follower] Lady styling
+
+27
+00:01:02,100 --> 00:01:04,459
+Copa by holding the follower's hips with change of directions for the leader
+[Leader] Man styling
+[Follower] Lady styling
+
+28
+00:01:04,459 --> 00:01:06,820
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+29
+00:01:06,820 --> 00:01:09,260
+Natural top
+[Follower] Lady styling
+
+30
+00:01:09,260 --> 00:01:11,620
+Natural top
+[Leader] Man styling
+[Follower] Lady styling
+
+31
+00:01:11,620 --> 00:01:13,980
+XBL with a left (inside) turn for the follower starts with right hand throw for the follower, ends with right half-turn for the leader
+[Leader] Man styling
+[Follower] Lady styling
+
+32
+00:01:13,980 --> 00:01:16,350
+[Leader] Double right turn
+[Follower] Standing on the same spot on the beats 5, 6 and 7
+
+33
+00:01:16,350 --> 00:01:18,790
+[Leader] Sliding on beat 1, bringing left heel to the right knee on 3, back step on the left foot on 6
+[Follower] Quick left turn
+
+34
+00:01:18,790 --> 00:01:21,230
+[Leader] Steps sideways on the beat 1 and 3
+[Follower] Steps sideways on the beat 5 and 7
+
+35
+00:01:21,230 --> 00:01:23,630
+XBL with normal open hold
+[Follower] Lady styling
+
+36
+00:01:23,630 --> 00:01:26,070
+Double right turn for the follower, crossed hold, ends with double hand throw for the follower
+[Follower] Lady styling
+
+37
+00:01:26,070 --> 00:01:28,190
+XBL with a left (inside) turn for the follower with normal open hold without letting the hands go
+
+38
+00:01:28,190 --> 00:01:30,670
+XBL with a left (inside) turn for the follower with normal open hold without letting the hands go
+[Leader] Man styling
+
+39
+00:01:30,670 --> 00:01:32,990
+XBL with normal closed hold
+[Follower] Lady styling
+
+40
+00:01:32,990 --> 00:01:35,270
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+41
+00:01:35,270 --> 00:01:37,710
+Walking around the partner for the follower
+
+42
+00:01:37,710 --> 00:01:40,070
+Change of Directions (Swap Position) for the follower with crossed hold, comb on the follower, late left turn for the leader
+[Leader] Man styling
+
+43
+00:01:40,070 --> 00:01:42,430
+Copa on 7 with Embrace hold
+[Leader] Man styling
+[Follower] Lady styling
+
+44
+00:01:42,430 --> 00:01:44,710
+[Leader] Basic step, facing the line of dance
+[Follower] Change of Directions (Swap Position)
+
+45
+00:01:44,710 --> 00:01:47,150
+[Leader] Basic step, facing the line of dance
+[Follower] Mambo taps on beats 5 and 7
+
+46
+00:01:47,150 --> 00:01:49,470
+
+[Leader] Basic step, facing the line of dance
+[Follower] Cross point on the beat 2, ends with suzy walk
+
+47
+00:01:49,470 --> 00:01:51,790
+[Leader] Mambo taps on beats 5 and 7
+[Follower] Left turn
+
+48
+00:01:51,790 --> 00:01:54,060
+[Leader] Hip movement and shoulder movement on the same spot on the beats 1, 2, 3
+[Follower] Cross point on the beat 2, ends with suzy walk
+
+49
+00:01:54,060 --> 00:01:56,500
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+50
+00:01:56,500 --> 00:01:58,780
+XBL with a right (outside) turn for the follower, on the right side of the leader with left turn for the leader, ends with comb for the leader
+
+51
+00:01:58,780 --> 00:02:01,100
+XBL with a left (inside) turn for the follower, both hands hold, ends with late right turn for the leader with comb on the follower and then comb on the leader
+[Leader] Man styling
+
+52
+00:02:01,100 --> 00:02:03,460
+Right turn for the follower, right turn for the leader, crossed hold, hands change over the follower and then over the leader
+[Leader] Man styling
+[Follower] Lady styling
+
+53
+00:02:03,460 --> 00:02:05,820
+XBL with a left (inside) turn for the follower ends with left hands throw for the follower
+[Follower] Lady styling
+
+54
+00:02:05,820 --> 00:02:08,180
+Right turn for the follower with normal open hold, ends with right hand throw with the leader's right hand
+[Follower] Lady styling
+
+55
+00:02:08,180 --> 00:02:10,580
+Right hand throw with the leader's right hand, ends with left hand throw for the follower into left HL for the follower
+[Leader] Man styling
+[Follower] Lady styling
+
+56
+00:02:10,580 --> 00:02:12,780
+Change of Directions (Swap Position) for the follower with crossed hold, late left turn for the leader
+
+57
+00:02:12,780 --> 00:02:15,100
+Check by holding the follower's both hands (open hands down, Titanic for the lady in a shadow) after XBL with a left (inside) turn for the follower.
+
+58
+00:02:15,100 --> 00:02:17,540
+XBL with  double left (inside) turn for the follower with crossed hold on the right side of the leader, ends with late half right turn for the leader
+
+59
+00:02:17,540 --> 00:02:19,820
+Change of Directions (Swap Position) for the follower with crossed hold, ends with right hand throw for the follower with the leader's left hand into right HL for the follower
+[Leader] Man styling
+
+60
+00:02:19,820 --> 00:02:22,180
+Right turn for the follower from right HL, left turn for the follower
+
+61
+00:02:22,180 --> 00:02:24,540
+XBL with a left (inside) turn for the follower with no hands after left hand throw
+[Follower] Lady styling
+
+62
+00:02:24,540 --> 00:02:26,820
+XBL with normal open hold ends with break
+[Follower] Lady styling
+
+63
+00:02:26,820 --> 00:02:29,100
+XBL with a right (outside) turn for the follower with crossed hold on the right side of the leader while hands change, ends with right half-turn for the leader
+
+64
+00:02:29,110 --> 00:02:30,750
+XBL with a left (inside) turn for the follower
