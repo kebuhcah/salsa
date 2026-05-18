@@ -419,6 +419,69 @@
     }
     #now-moves .cn-move { font-size: 0.9rem; }
     #now-moves .cn-hold { font-size: 0.78rem; }
+
+    /* ── beat counter ── */
+    #beat-bar {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    #beat-bar.visible { display: flex; }
+    #beat-pips {
+      display: flex;
+      gap: 5px;
+      flex: 1;
+      justify-content: center;
+    }
+    .beat-pip {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      transition: background 0.06s, color 0.06s, border-color 0.06s;
+      cursor: default;
+    }
+    .beat-pip.on2-accent {
+      border-color: var(--leader);
+      color: var(--leader);
+    }
+    .beat-pip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .beat-pip.on2-accent.active {
+      background: var(--leader);
+      border-color: var(--leader);
+    }
+    /* beats 4 and 8 are the "pause" counts — slightly muted */
+    .beat-pip.pause { opacity: 0.5; }
+    #on2-toggle {
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    #on2-toggle.on2 {
+      border-color: var(--leader);
+      color: var(--leader);
+      background: #0d1e33;
+    }
   </style>
 </head>
 <body>
@@ -453,6 +516,10 @@
     <div id="left">
       <div id="video-wrap">
         <video id="player" controls></video>
+      </div>
+      <div id="beat-bar">
+        <div id="beat-pips"></div>
+        <button id="on2-toggle" title="Toggle on-two mode — highlights beat 2 as the break">on-1</button>
       </div>
       <div id="now-playing">
         <div id="now-label">Now playing</div>
@@ -1046,8 +1113,73 @@
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
+  // ── beat counter ─────────────────────────────────────────────────────────────
+  let beatBars = [];   // [{start, end, beatDur}] one per Together phrase
+  let on2Mode  = false;
+  let lastBeat = -1;
+
+  const beatBar    = document.getElementById('beat-bar');
+  const beatPips   = document.getElementById('beat-pips');
+  const on2Toggle  = document.getElementById('on2-toggle');
+
+  // Build beat pip elements (1–8) once
+  for (let b = 1; b <= 8; b++) {
+    const pip = document.createElement('div');
+    pip.className = 'beat-pip' + (b === 4 || b === 8 ? ' pause' : '');
+    pip.textContent = b;
+    pip.dataset.beat = b;
+    beatPips.appendChild(pip);
+  }
+  const pipEls = Array.from(beatPips.querySelectorAll('.beat-pip'));
+
+  function applyOn2Style() {
+    pipEls.forEach(p => {
+      const b = +p.dataset.beat;
+      p.classList.toggle('on2-accent', on2Mode && b === 2);
+    });
+    on2Toggle.textContent = on2Mode ? 'on-2' : 'on-1';
+    on2Toggle.classList.toggle('on2', on2Mode);
+  }
+
+  on2Toggle.addEventListener('click', () => {
+    on2Mode = !on2Mode;
+    applyOn2Style();
+  });
+
+  function buildBeatBars(annotations) {
+    beatBars = annotations
+      .filter(a => a.category === 'Together')
+      .sort((a, b) => a.startSec - b.startSec)
+      .map(a => ({ start: a.startSec, end: a.endSec,
+                   beatDur: (a.endSec - a.startSec) / 8 }));
+    beatBar.classList.toggle('visible', beatBars.length > 0);
+    lastBeat = -1;
+    pipEls.forEach(p => p.classList.remove('active'));
+    applyOn2Style();
+  }
+
+  function updateBeatCounter(t) {
+    // Binary search for the phrase containing t
+    let lo = 0, hi = beatBars.length - 1, bar = null;
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1;
+      const b = beatBars[mid];
+      if (t < b.start) hi = mid - 1;
+      else if (t >= b.end) lo = mid + 1;
+      else { bar = b; break; }
+    }
+    const beat = bar ? Math.floor((t - bar.start) / bar.beatDur) + 1 : 0;
+    const clamped = Math.min(beat, 8);
+    if (clamped === lastBeat) return;
+    lastBeat = clamped;
+    pipEls.forEach(p => p.classList.toggle('active', +p.dataset.beat === clamped));
+  }
+
   // ── timeupdate ──────────────────────────────────────────────────────────────
-  player.addEventListener('timeupdate', () => updateHighlight(player.currentTime));
+  player.addEventListener('timeupdate', () => {
+    updateHighlight(player.currentTime);
+    updateBeatCounter(player.currentTime);
+  });
 
   function updateHighlight(t) {
     const newActive = new Set();
@@ -1122,6 +1254,7 @@
       const text = await res.text();
       allAnnotations = parseAnnotations(text);
       computeHoldStates(allAnnotations);
+      buildBeatBars(allAnnotations);
       rebuildList();
       nowMoves.innerHTML = '<span style="color:var(--muted);font-size:.9rem">Press play to begin.</span>';
     } catch (err) {
