@@ -1,0 +1,992 @@
+{
+  "nodes": [
+    "Other",
+    "Open Break",
+    "Turn",
+    "Copa",
+    "Change of Directions",
+    "Hand Throw",
+    "Suzy Q",
+    "Walks Around",
+    "Enchufla",
+    "Arm Lock",
+    "Lasso",
+    "Natural Top",
+    "Check",
+    "XBL",
+    "Comb",
+    "Basic"
+  ],
+  "edges": [
+    {
+      "from": "Basic",
+      "to": "Turn",
+      "weight": 40
+    },
+    {
+      "from": "Turn",
+      "to": "Other",
+      "weight": 17
+    },
+    {
+      "from": "Other",
+      "to": "Basic",
+      "weight": 22
+    },
+    {
+      "from": "Basic",
+      "to": "Basic",
+      "weight": 106
+    },
+    {
+      "from": "Turn",
+      "to": "Basic",
+      "weight": 46
+    },
+    {
+      "from": "Basic",
+      "to": "XBL",
+      "weight": 50
+    },
+    {
+      "from": "XBL",
+      "to": "Turn",
+      "weight": 42
+    },
+    {
+      "from": "Turn",
+      "to": "Hand Throw",
+      "weight": 9
+    },
+    {
+      "from": "Hand Throw",
+      "to": "Hand Throw",
+      "weight": 12
+    },
+    {
+      "from": "Hand Throw",
+      "to": "Basic",
+      "weight": 4
+    },
+    {
+      "from": "Turn",
+      "to": "Turn",
+      "weight": 26
+    },
+    {
+      "from": "XBL",
+      "to": "Basic",
+      "weight": 28
+    },
+    {
+      "from": "Hand Throw",
+      "to": "Turn",
+      "weight": 6
+    },
+    {
+      "from": "Basic",
+      "to": "Other",
+      "weight": 16
+    },
+    {
+      "from": "Other",
+      "to": "Other",
+      "weight": 8
+    },
+    {
+      "from": "Other",
+      "to": "Turn",
+      "weight": 16
+    },
+    {
+      "from": "Basic",
+      "to": "Hand Throw",
+      "weight": 6
+    },
+    {
+      "from": "Basic",
+      "to": "Suzy Q",
+      "weight": 3
+    },
+    {
+      "from": "Suzy Q",
+      "to": "Suzy Q",
+      "weight": 7
+    },
+    {
+      "from": "Suzy Q",
+      "to": "Basic",
+      "weight": 4
+    },
+    {
+      "from": "XBL",
+      "to": "Check",
+      "weight": 8
+    },
+    {
+      "from": "Check",
+      "to": "Basic",
+      "weight": 2
+    },
+    {
+      "from": "Hand Throw",
+      "to": "XBL",
+      "weight": 16
+    },
+    {
+      "from": "XBL",
+      "to": "XBL",
+      "weight": 227
+    },
+    {
+      "from": "Turn",
+      "to": "XBL",
+      "weight": 22
+    },
+    {
+      "from": "XBL",
+      "to": "Comb",
+      "weight": 36
+    },
+    {
+      "from": "Open Break",
+      "to": "XBL",
+      "weight": 6
+    },
+    {
+      "from": "Check",
+      "to": "XBL",
+      "weight": 5
+    },
+    {
+      "from": "Comb",
+      "to": "XBL",
+      "weight": 32
+    },
+    {
+      "from": "XBL",
+      "to": "Hand Throw",
+      "weight": 14
+    },
+    {
+      "from": "XBL",
+      "to": "Copa",
+      "weight": 20
+    },
+    {
+      "from": "Copa",
+      "to": "XBL",
+      "weight": 28
+    },
+    {
+      "from": "XBL",
+      "to": "Other",
+      "weight": 26
+    },
+    {
+      "from": "XBL",
+      "to": "Lasso",
+      "weight": 2
+    },
+    {
+      "from": "XBL",
+      "to": "Walks Around",
+      "weight": 8
+    },
+    {
+      "from": "Other",
+      "to": "XBL",
+      "weight": 23
+    },
+    {
+      "from": "Walks Around",
+      "to": "XBL",
+      "weight": 11
+    },
+    {
+      "from": "Turn",
+      "to": "Copa",
+      "weight": 4
+    },
+    {
+      "from": "Natural Top",
+      "to": "XBL",
+      "weight": 5
+    },
+    {
+      "from": "Other",
+      "to": "Copa",
+      "weight": 3
+    },
+    {
+      "from": "Turn",
+      "to": "Comb",
+      "weight": 5
+    },
+    {
+      "from": "XBL",
+      "to": "Open Break",
+      "weight": 3
+    },
+    {
+      "from": "Comb",
+      "to": "Walks Around",
+      "weight": 3
+    },
+    {
+      "from": "Copa",
+      "to": "Other",
+      "weight": 2
+    },
+    {
+      "from": "Other",
+      "to": "Hand Throw",
+      "weight": 2
+    },
+    {
+      "from": "Comb",
+      "to": "Other",
+      "weight": 4
+    },
+    {
+      "from": "XBL",
+      "to": "Arm Lock",
+      "weight": 3
+    },
+    {
+      "from": "Arm Lock",
+      "to": "XBL",
+      "weight": 3
+    },
+    {
+      "from": "XBL",
+      "to": "Natural Top",
+      "weight": 4
+    },
+    {
+      "from": "Hand Throw",
+      "to": "Copa",
+      "weight": 2
+    },
+    {
+      "from": "Natural Top",
+      "to": "Natural Top",
+      "weight": 4
+    },
+    {
+      "from": "Comb",
+      "to": "Turn",
+      "weight": 3
+    }
+  ],
+  "hold_nodes": [
+    "Suzy Q[crossed]",
+    "Copa[open]",
+    "Basic[open]",
+    "Comb[closed]",
+    "Walks Around[crossed]",
+    "Comb[hl_left]",
+    "Other[hl_left]",
+    "Copa[shadow]",
+    "Arm Lock[open]",
+    "Basic[closed]",
+    "Suzy Q[open]",
+    "Open Break[open]",
+    "XBL[embrace]",
+    "Basic[hl_right]",
+    "XBL[hl_left]",
+    "Turn[open]",
+    "Hand Throw[crossed]",
+    "Open Break[hl_left]",
+    "Other[crossed]",
+    "Hand Throw[hl_left]",
+    "Hand Throw[open]",
+    "XBL[shadow]",
+    "Turn[crossed]",
+    "Walks Around[embrace]",
+    "Check[shadow]",
+    "Comb[embrace]",
+    "Walks Around[hl_left]",
+    "Comb[open]",
+    "Copa[hl_left]",
+    "Check[crossed]",
+    "Change of Directions[hl_left]",
+    "Basic[hl_left]",
+    "XBL[closed]",
+    "Lasso[crossed]",
+    "Arm Lock[crossed]",
+    "Copa[embrace]",
+    "Comb[shadow]",
+    "XBL[crossed]",
+    "Comb[crossed]",
+    "Hand Throw[embrace]",
+    "Other[open]",
+    "Check[open]",
+    "Turn[hl_left]",
+    "Hand Throw[shadow]",
+    "Natural Top[closed]",
+    "XBL[hl_right]",
+    "Enchufla[open]",
+    "Natural Top[open]",
+    "Turn[closed]",
+    "Basic[crossed]",
+    "Check[hl_left]",
+    "Copa[crossed]",
+    "Turn[hl_right]",
+    "Lasso[open]",
+    "Walks Around[open]",
+    "XBL[open]"
+  ],
+  "hold_edges": [
+    {
+      "from": "Basic[open]",
+      "to": "Turn[open]",
+      "weight": 24
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Other[open]",
+      "weight": 8
+    },
+    {
+      "from": "Other[open]",
+      "to": "Basic[open]",
+      "weight": 11
+    },
+    {
+      "from": "Basic[open]",
+      "to": "Basic[open]",
+      "weight": 59
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Basic[open]",
+      "weight": 19
+    },
+    {
+      "from": "Basic[open]",
+      "to": "XBL[open]",
+      "weight": 30
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Turn[closed]",
+      "weight": 5
+    },
+    {
+      "from": "Hand Throw[open]",
+      "to": "Hand Throw[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Turn[crossed]",
+      "weight": 6
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Hand Throw[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "Hand Throw[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 11
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Basic[open]",
+      "weight": 6
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Turn[open]",
+      "weight": 12
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Hand Throw[open]",
+      "weight": 3
+    },
+    {
+      "from": "Hand Throw[open]",
+      "to": "Turn[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 14
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Other[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "Basic[hl_left]",
+      "to": "Basic[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Basic[open]",
+      "weight": 11
+    },
+    {
+      "from": "Basic[open]",
+      "to": "Other[open]",
+      "weight": 11
+    },
+    {
+      "from": "Other[open]",
+      "to": "Turn[open]",
+      "weight": 10
+    },
+    {
+      "from": "Other[open]",
+      "to": "Turn[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 32
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Basic[open]",
+      "weight": 4
+    },
+    {
+      "from": "Other[open]",
+      "to": "Basic[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 11
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Basic[open]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Basic[closed]",
+      "weight": 2
+    },
+    {
+      "from": "Basic[closed]",
+      "to": "XBL[closed]",
+      "weight": 5
+    },
+    {
+      "from": "XBL[closed]",
+      "to": "Turn[closed]",
+      "weight": 2
+    },
+    {
+      "from": "Turn[closed]",
+      "to": "Basic[open]",
+      "weight": 4
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Turn[open]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Basic[closed]",
+      "weight": 2
+    },
+    {
+      "from": "Basic[closed]",
+      "to": "Basic[closed]",
+      "weight": 6
+    },
+    {
+      "from": "Basic[closed]",
+      "to": "Turn[closed]",
+      "weight": 3
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Other[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Other[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Hand Throw[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "Hand Throw[crossed]",
+      "to": "Hand Throw[crossed]",
+      "weight": 7
+    },
+    {
+      "from": "Suzy Q[open]",
+      "to": "Suzy Q[open]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Turn[open]",
+      "weight": 18
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Basic[crossed]",
+      "weight": 6
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Other[open]",
+      "weight": 3
+    },
+    {
+      "from": "Suzy Q[crossed]",
+      "to": "Suzy Q[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "Suzy Q[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "Other[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Turn[open]",
+      "weight": 8
+    },
+    {
+      "from": "Other[crossed]",
+      "to": "Basic[open]",
+      "weight": 3
+    },
+    {
+      "from": "Basic[open]",
+      "to": "Basic[closed]",
+      "weight": 2
+    },
+    {
+      "from": "Basic[crossed]",
+      "to": "Suzy Q[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Hand Throw[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Basic[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "Turn[open]",
+      "to": "Hand Throw[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Hand Throw[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Other[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[open]",
+      "to": "XBL[open]",
+      "weight": 129
+    },
+    {
+      "from": "Basic[open]",
+      "to": "XBL[closed]",
+      "weight": 4
+    },
+    {
+      "from": "Turn[closed]",
+      "to": "XBL[open]",
+      "weight": 2
+    },
+    {
+      "from": "Open Break[open]",
+      "to": "XBL[open]",
+      "weight": 5
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Check[open]",
+      "weight": 5
+    },
+    {
+      "from": "Check[open]",
+      "to": "XBL[embrace]",
+      "weight": 3
+    },
+    {
+      "from": "Comb[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 11
+    },
+    {
+      "from": "Turn[open]",
+      "to": "XBL[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "XBL[closed]",
+      "to": "XBL[open]",
+      "weight": 9
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Hand Throw[open]",
+      "weight": 6
+    },
+    {
+      "from": "Hand Throw[open]",
+      "to": "XBL[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "XBL[open]",
+      "weight": 32
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Copa[shadow]",
+      "weight": 2
+    },
+    {
+      "from": "Copa[shadow]",
+      "to": "XBL[shadow]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[shadow]",
+      "to": "XBL[open]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[open]",
+      "to": "XBL[closed]",
+      "weight": 11
+    },
+    {
+      "from": "Turn[open]",
+      "to": "XBL[open]",
+      "weight": 7
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Other[open]",
+      "weight": 8
+    },
+    {
+      "from": "Comb[open]",
+      "to": "XBL[open]",
+      "weight": 6
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Copa[open]",
+      "weight": 10
+    },
+    {
+      "from": "Copa[open]",
+      "to": "XBL[embrace]",
+      "weight": 6
+    },
+    {
+      "from": "XBL[embrace]",
+      "to": "Walks Around[hl_left]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Other[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Other[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 7
+    },
+    {
+      "from": "XBL[open]",
+      "to": "XBL[hl_left]",
+      "weight": 5
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "Copa[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "Copa[hl_left]",
+      "to": "XBL[embrace]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[embrace]",
+      "to": "Other[open]",
+      "weight": 2
+    },
+    {
+      "from": "Other[open]",
+      "to": "XBL[open]",
+      "weight": 12
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Comb[crossed]",
+      "weight": 8
+    },
+    {
+      "from": "Copa[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "Natural Top[open]",
+      "to": "XBL[open]",
+      "weight": 4
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Copa[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Comb[open]",
+      "weight": 6
+    },
+    {
+      "from": "Comb[open]",
+      "to": "XBL[crossed]",
+      "weight": 8
+    },
+    {
+      "from": "Turn[hl_left]",
+      "to": "XBL[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Other[open]",
+      "weight": 7
+    },
+    {
+      "from": "Turn[crossed]",
+      "to": "Comb[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Walks Around[open]",
+      "weight": 2
+    },
+    {
+      "from": "Walks Around[open]",
+      "to": "XBL[open]",
+      "weight": 2
+    },
+    {
+      "from": "Copa[open]",
+      "to": "XBL[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "Walks Around[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "XBL[crossed]",
+      "weight": 4
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Comb[crossed]",
+      "weight": 5
+    },
+    {
+      "from": "Comb[crossed]",
+      "to": "XBL[open]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "Hand Throw[open]",
+      "weight": 2
+    },
+    {
+      "from": "Hand Throw[open]",
+      "to": "XBL[hl_left]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "Turn[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Comb[open]",
+      "weight": 11
+    },
+    {
+      "from": "XBL[open]",
+      "to": "XBL[crossed]",
+      "weight": 11
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "Other[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "Hand Throw[hl_left]",
+      "to": "XBL[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Arm Lock[open]",
+      "to": "XBL[open]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[embrace]",
+      "to": "XBL[open]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[embrace]",
+      "to": "XBL[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Hand Throw[hl_left]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "Turn[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Other[open]",
+      "to": "Other[open]",
+      "weight": 4
+    },
+    {
+      "from": "Walks Around[hl_left]",
+      "to": "XBL[hl_left]",
+      "weight": 4
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "XBL[open]",
+      "weight": 3
+    },
+    {
+      "from": "Comb[open]",
+      "to": "Other[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[hl_left]",
+      "to": "Copa[open]",
+      "weight": 2
+    },
+    {
+      "from": "Copa[open]",
+      "to": "XBL[open]",
+      "weight": 5
+    },
+    {
+      "from": "XBL[open]",
+      "to": "Natural Top[open]",
+      "weight": 3
+    },
+    {
+      "from": "XBL[crossed]",
+      "to": "XBL[shadow]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[closed]",
+      "to": "Other[open]",
+      "weight": 2
+    },
+    {
+      "from": "XBL[closed]",
+      "to": "XBL[closed]",
+      "weight": 5
+    },
+    {
+      "from": "Other[crossed]",
+      "to": "Other[crossed]",
+      "weight": 3
+    },
+    {
+      "from": "Natural Top[open]",
+      "to": "Natural Top[open]",
+      "weight": 4
+    },
+    {
+      "from": "Comb[crossed]",
+      "to": "Turn[crossed]",
+      "weight": 2
+    },
+    {
+      "from": "Copa[crossed]",
+      "to": "XBL[embrace]",
+      "weight": 3
+    }
+  ]
+}
