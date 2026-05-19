@@ -110,12 +110,14 @@
       align-items: center;
       justify-content: center;
       min-height: 0;
+      aspect-ratio: 1 / 1;
+      align-self: center;
     }
 
     #player {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
     }
 
@@ -547,24 +549,23 @@
 
       #video-wrap {
         flex: none;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 1 / 1;
         height: auto;
       }
 
-      #now-playing { min-height: unset; }
+      #now-playing { display: none; }
 
-      /* side panel becomes bottom panel */
+      /* side panel becomes bottom panel with fixed-height scroll */
       #right {
         width: 100%;
         border-left: none;
         border-top: 1px solid var(--border);
-        height: auto;
+        height: 45vh;
         max-height: none;
       }
 
       #annot-list {
-        overflow-y: visible;
-        max-height: none;
+        overflow-y: auto;
       }
 
       /* smaller beat pips */
@@ -1305,7 +1306,7 @@
       // scroll first active row into view
       const firstIdx = Math.min(...newActive);
       if (rowEls[firstIdx]) {
-        rowEls[firstIdx].scrollIntoView({ block: 'nearest' });
+        rowEls[firstIdx].scrollIntoView({ block: 'start' });
       }
 
       // update now-playing panel
