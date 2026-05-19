@@ -528,7 +528,8 @@
 
       #seq-select { max-width: 100%; width: 100%; }
 
-      #track-toggles { flex-wrap: wrap; gap: 5px; }
+      #track-toggles { display: none; }
+      #tabs { display: none; }
 
       main {
         overflow: visible;
@@ -1343,6 +1344,7 @@
     if (!opt.dataset.pair) return;
 
     const s = { pair: +opt.dataset.pair, song: +opt.dataset.song, take: +opt.dataset.take };
+    history.replaceState(null, '', '?seq=' + seqId(s));
 
     // set video
     player.src = seqUrl(s, 'mp4');
@@ -1367,6 +1369,14 @@
       nowMoves.innerHTML = '<span style="color:var(--error);font-size:.85rem">Annotation load failed.</span>';
     }
   });
+
+  // ── restore or default sequence from URL ────────────────────────────────────
+  {
+    const params = new URLSearchParams(location.search);
+    const seq = params.get('seq') || 'Pair2_song2_take1';
+    const match = [...select.options].find(o => o.value === seq);
+    if (match) { match.selected = true; select.dispatchEvent(new Event('change')); }
+  }
 
   // ── shared [data-tip] tooltip ─────────────────────────────────────────────
   const appTooltip = document.getElementById('app-tooltip');
