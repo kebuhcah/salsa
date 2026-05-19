@@ -1303,10 +1303,11 @@
       for (const i of newActive)      rowEls[i]?.classList.add('active');
       lastActiveRows = newActive;
 
-      // scroll first active row into view
+      // scroll first active row into view (scroll list container directly
+      // to avoid scrollIntoView jumping the whole page on mobile)
       const firstIdx = Math.min(...newActive);
       if (rowEls[firstIdx]) {
-        rowEls[firstIdx].scrollIntoView({ block: 'start' });
+        annotList.scrollTop = rowEls[firstIdx].offsetTop - annotList.offsetTop;
       }
 
       // update now-playing panel
